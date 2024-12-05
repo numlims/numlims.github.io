@@ -1,0 +1,29 @@
+# __main__ runs tbl on cmd line
+
+import sys
+from tbl import tbl
+
+# main starts tbl
+def main():    
+
+    configchap = sys.argv[1]
+
+    # start tbl
+    t = tbl(configchap)
+
+    if sys.argv[2] == "fk":
+        #print(json.dumps(t.fk()))
+        print(jsonpickle.encode(t.fk())) # todo do differently
+    
+    if sys.argv[2] == "tables":
+        print(json.dumps(t.tables()))
+
+    if sys.argv[2] == "fields":
+        # table name given
+        if len(sys.argv) == 4:
+            print(json.dumps(t.fields(sys.argv[3])))
+        else: # table name not given
+            print(json.dumps(t.fields()))
+
+
+sys.exit(main())
