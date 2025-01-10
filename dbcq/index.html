@@ -51,16 +51,21 @@ hljs.highlightAll();
     &#34;dbcq opens a db connection to a target from .dbc&#34;
     def __init__(self, target):
         self.target = target
-        self.info = dbinfo(target)
+        if target:
+            self.info = dbinfo(target)
 
     def hasini():
         &#34;hasini returns whether there is a .dbc ini file in the home&#34;
-        return dbc.hasini()
+        return _dbc.hasini()
     
     def inipath():
         &#34;inipath gives the path where dbcq looks for the .dbc ini file (usually in the home)&#34;
 
-        return dbc.inipath()
+        return _dbc.inipath()
+
+    def targets():
+        &#34;targets gives the db targets from .dbc ini file&#34;
+        return _dbc.targets()
     
     def query(self, query, *values):
         &#34;query executes query with optional values&#34;
@@ -158,6 +163,12 @@ hljs.highlightAll();
 <dd>
 <div class="desc"><p>query executes query with optional values</p></div>
 </dd>
+<dt id="dbcq.dbcq.targets"><code class="name flex">
+<span>def <span class="ident">targets</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>targets gives the db targets from .dbc ini file</p></div>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -179,6 +190,7 @@ hljs.highlightAll();
 <li><code><a title="dbcq.dbcq.qfa" href="#dbcq.dbcq.qfa">qfa</a></code></li>
 <li><code><a title="dbcq.dbcq.qfad" href="#dbcq.dbcq.qfad">qfad</a></code></li>
 <li><code><a title="dbcq.dbcq.query" href="#dbcq.dbcq.query">query</a></code></li>
+<li><code><a title="dbcq.dbcq.targets" href="#dbcq.dbcq.targets">targets</a></code></li>
 </ul>
 </li>
 </ul>
