@@ -50,6 +50,6 @@ to get changes from your code updated in the api docs on
 
 you might have to log into your github account before saying `make
 doc-publish`. you can consider adding an automitic log in to github as
-the first line of the `publish` section in this repo's `makefile`. for
+the first line of the `publish:` section in this repo's `makefile`. for
 a gh login script see
 [gh-login](https://github.com/numlims/limsbin/blob/main/gh-login).
