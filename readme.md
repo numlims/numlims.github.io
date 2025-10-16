@@ -10,7 +10,8 @@ for a new program:
 clone this repo and place it in your home as `numlims.github.io` (if
 you chose a different name adjust the path in the following steps).
 
-insert this into the `makefile` of your program, if not there already:
+insert this into the `makefile` of your program and fill in
+`<myprogram>` and `<doc html generation command>`.
 
 ```
 # point to the doc repo
@@ -28,12 +29,10 @@ doc-publish:
 	cd ${docmake} && make publish
 ```
 
-this adds pointers to this repo, inserts a `doc:` section to generate
-the html (if not there already) and a `doc-publish:` section for
-getting the generated html into this repo.
+the `doc:` section generates the html and the `doc-publish:` gets the
+generated html into this repo.
 
-if it's a new program, add a link to the program's doc folder in this
-repo's `index.html`.
+if it's a new program, update this repo's [`index.html`](./index.html):
 
 ```
 <a href="myprogram">my program</a><br>
