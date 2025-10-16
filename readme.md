@@ -1,40 +1,35 @@
 # numlims.github.io
 
-see [numlims.github.io](https://numlims.github.io/).
+this repo contains the api docs on [numlims.github.io](https://numlims.github.io/).
 
 ## update this
 
-to add a api doc to this repo or to update the api doc for one of the
+to add a new api doc or to update the doc for one of the
 programs contained here:
 
-clone this repo, github.com/numlims/numlims, place it in your home as
-`numlims.github.io` (or adjust the path in the following steps).
+clone this repo and place it in your home as `numlims.github.io` (if
+you chose a different name adjust the path in the following steps).
 
-in the `makefile` of your program, point to this repo:
+insert this into the `makefile` of your program, if not there already:
 
 ```
-docdir = ~/numlims.github.io/<program>
+# point to the doc repo
+docdir = ~/numlims.github.io/<myprogram>
 docmake = ~/numlims.github.io
-```
 
-insert a `doc` section to generate
-the html (if not there already):
-
-```
 doc:
 	make
 	<doc html generation command>  # e.g. pdoc "./myprogram" -o html
-```
 
-insert a `doc-publish` section for getting the generated html into
-this repo.
-
-```
 doc-publish:
 	make doc
 	cp -r html/* ${docdir}
 	cd ${docmake} && make publish
 ```
+
+this adds pointers to this repo, inserts a `doc` section to generate
+the html (if not there already) and a `doc-publish` section for
+getting the generated html into this repo.
 
 in this repo's `index.html`, add a link to your program's doc folder:
 
