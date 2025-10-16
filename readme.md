@@ -28,15 +28,15 @@ doc-publish:
 	cd ${docmake} && make publish
 ```
 
-this adds pointers to this repo, inserts a `doc` section to generate
-the html (if not there already) and a `doc-publish` section for
+this adds pointers to this repo, inserts a `doc:` section to generate
+the html (if not there already) and a `doc-publish:` section for
 getting the generated html into this repo.
 
 if it's a new program, add a link to the program's doc folder in this
 repo's `index.html`.
 
 ```
-<a href="myprogram">my program</a>
+<a href="myprogram">my program</a><br>
 ```
 
 then, in your program's root you just need to say
