@@ -10,8 +10,8 @@ for a new program:
 clone this repo and place it in your home as `numlims.github.io` (if
 you chose a different name adjust the path in the following steps).
 
-insert this into the `makefile` of your program and fill in
-`<myprogram>` and `<doc html generation command>`.
+insert the following lines into the `makefile` of your program and
+fill in `<myprogram>` and `<doc html generation command>`.
 
 ```
 # point to the doc repo
