@@ -84,91 +84,93 @@ dbcq    </h1>
 </span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="k">class</span><span class="w"> </span><span class="nc">dbcq</span><span class="p">:</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
 </span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">hasini</span><span class="p">():</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;dbcq: </span><span class="si">{</span><span class="n">dbcq</span><span class="o">.</span><span class="n">inipath</span><span class="p">()</span><span class="si">}</span><span class="s2"> not found. please create the file and fill in:</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="s2">[&lt;target name&gt;]</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="s2">type = &lt;mssql|sqlite&gt;</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="s2">database = &lt;database name&gt;</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="s2">username = &lt;user name&gt;</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="s2">password = &lt;password&gt;</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="s2">server = &lt;ip address&gt;</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="s2">port = &lt;port&gt;</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="s2">driver = &lt;driver&gt;&quot;&quot;&quot;</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>            <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;no .dbc file&quot;</span><span class="p">)</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>        <span class="k">if</span> <span class="n">target</span><span class="p">:</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">dbinfo</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">hasini</span><span class="p">():</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">        hasini returns whether there is a .dbc ini file in the home.</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">hasini</span><span class="p">()</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">inipath</span><span class="p">():</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">        inipath gives the path where dbcq looks for the .dbc ini file (usually in the home).</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">inipath</span><span class="p">()</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">targets</span><span class="p">():</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">        targets gives the db targets from .dbc ini file.</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">targets</span><span class="p">()</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">        query executes query with optional values.</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>        <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">qfa</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        qfa (query-fetch-all) executes query with optional values and returns</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        the results.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>        <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>            <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>            <span class="k">return</span> <span class="n">rows</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">qfad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">        qfad (query-fetch-all-dict) returns query results as an array of dicts,</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">        e.g. for json parsing.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;mssql&quot;</span><span class="p">:</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>            <span class="n">rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qfa</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>            <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_row_to_dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>            <span class="k">return</span> <span class="n">dicts</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;sqlite&quot;</span><span class="p">:</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>            <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>                <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>                <span class="n">cursor</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="c1"># pass as tuple, see https://stackoverflow.com/a/16856730</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>                <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>                <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>                <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>                <span class="k">return</span> <span class="n">dicts</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>              <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;db type </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is currently not supported.&quot;</span><span class="p">)</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a><span class="sd">        info returns database info.</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_row_to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a><span class="sd">        _row_to_dict turns pyodbc-rows to dict:</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>        <span class="c1"># lowercase column names</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>        <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">cursor_description</span><span class="p">]</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>        <span class="c1"># use column names as dict keys</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">],</span> <span class="n">row</span><span class="p">))</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="sd">        __init__ opens a db connection to a target from .dbc.</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">hasini</span><span class="p">():</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;dbcq: </span><span class="si">{</span><span class="n">dbcq</span><span class="o">.</span><span class="n">inipath</span><span class="p">()</span><span class="si">}</span><span class="s2"> not found. please create the file and fill in:</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="s2">[&lt;target name&gt;]</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="s2">type = &lt;mssql|sqlite&gt;</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="s2">database = &lt;database name&gt;</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="s2">username = &lt;user name&gt;</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="s2">password = &lt;password&gt;</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="s2">server = &lt;ip address&gt;</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="s2">port = &lt;port&gt;</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="s2">driver = &lt;driver&gt;&quot;&quot;&quot;</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>            <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;no .dbc file&quot;</span><span class="p">)</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>        <span class="k">if</span> <span class="n">target</span><span class="p">:</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">dbinfo</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">hasini</span><span class="p">():</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">        hasini returns whether there is a .dbc ini file in the home.</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">hasini</span><span class="p">()</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">inipath</span><span class="p">():</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">        inipath gives the path where dbcq looks for the .dbc ini file (usually in the home).</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">inipath</span><span class="p">()</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">targets</span><span class="p">():</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">        targets gives the db targets from .dbc ini file.</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">targets</span><span class="p">()</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">        query executes query with optional values.</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>        <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">qfa</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        qfa (query-fetch-all) executes a query with optional values and returns</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        the results.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>        <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>            <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>            <span class="k">return</span> <span class="n">rows</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">qfad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">        qfad (query-fetch-all-dict) returns the query results as an array of dicts,</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">        e.g. for json parsing.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;mssql&quot;</span><span class="p">:</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>            <span class="n">rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qfa</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>            <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_row_to_dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>            <span class="k">return</span> <span class="n">dicts</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;sqlite&quot;</span><span class="p">:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>            <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>                <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>                <span class="n">cursor</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="c1"># pass as tuple, see https://stackoverflow.com/a/16856730</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>                <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>                <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>                <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>                <span class="k">return</span> <span class="n">dicts</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>              <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;db type </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is currently not supported.&quot;</span><span class="p">)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a><span class="sd">        info returns database info.</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>    
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_row_to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a><span class="sd">        _row_to_dict turns pyodbc-rows to dict:</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>        <span class="c1"># lowercase column names</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>        <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">cursor_description</span><span class="p">]</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>        <span class="c1"># use column names as dict keys</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">],</span> <span class="n">row</span><span class="p">))</span>
 </span></pre></div>
 
 
@@ -187,91 +189,93 @@ dbcq    </h1>
             <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq-4"><a href="#dbcq-4"><span class="linenos"> 4</span></a><span class="k">class</span><span class="w"> </span><span class="nc">dbcq</span><span class="p">:</span>
 </span><span id="dbcq-5"><a href="#dbcq-5"><span class="linenos"> 5</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
 </span><span id="dbcq-6"><a href="#dbcq-6"><span class="linenos"> 6</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq-7"><a href="#dbcq-7"><span class="linenos"> 7</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq-8"><a href="#dbcq-8"><span class="linenos"> 8</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">hasini</span><span class="p">():</span>
-</span><span id="dbcq-9"><a href="#dbcq-9"><span class="linenos"> 9</span></a>            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;dbcq: </span><span class="si">{</span><span class="n">dbcq</span><span class="o">.</span><span class="n">inipath</span><span class="p">()</span><span class="si">}</span><span class="s2"> not found. please create the file and fill in:</span>
-</span><span id="dbcq-10"><a href="#dbcq-10"><span class="linenos">10</span></a><span class="s2">[&lt;target name&gt;]</span>
-</span><span id="dbcq-11"><a href="#dbcq-11"><span class="linenos">11</span></a><span class="s2">type = &lt;mssql|sqlite&gt;</span>
-</span><span id="dbcq-12"><a href="#dbcq-12"><span class="linenos">12</span></a><span class="s2">database = &lt;database name&gt;</span>
-</span><span id="dbcq-13"><a href="#dbcq-13"><span class="linenos">13</span></a><span class="s2">username = &lt;user name&gt;</span>
-</span><span id="dbcq-14"><a href="#dbcq-14"><span class="linenos">14</span></a><span class="s2">password = &lt;password&gt;</span>
-</span><span id="dbcq-15"><a href="#dbcq-15"><span class="linenos">15</span></a><span class="s2">server = &lt;ip address&gt;</span>
-</span><span id="dbcq-16"><a href="#dbcq-16"><span class="linenos">16</span></a><span class="s2">port = &lt;port&gt;</span>
-</span><span id="dbcq-17"><a href="#dbcq-17"><span class="linenos">17</span></a><span class="s2">driver = &lt;driver&gt;&quot;&quot;&quot;</span>
-</span><span id="dbcq-18"><a href="#dbcq-18"><span class="linenos">18</span></a>            <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</span><span id="dbcq-19"><a href="#dbcq-19"><span class="linenos">19</span></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;no .dbc file&quot;</span><span class="p">)</span>
-</span><span id="dbcq-20"><a href="#dbcq-20"><span class="linenos">20</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span>
-</span><span id="dbcq-21"><a href="#dbcq-21"><span class="linenos">21</span></a>        <span class="k">if</span> <span class="n">target</span><span class="p">:</span>
-</span><span id="dbcq-22"><a href="#dbcq-22"><span class="linenos">22</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">dbinfo</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-</span><span id="dbcq-23"><a href="#dbcq-23"><span class="linenos">23</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">hasini</span><span class="p">():</span>
-</span><span id="dbcq-24"><a href="#dbcq-24"><span class="linenos">24</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq-25"><a href="#dbcq-25"><span class="linenos">25</span></a><span class="sd">        hasini returns whether there is a .dbc ini file in the home.</span>
-</span><span id="dbcq-26"><a href="#dbcq-26"><span class="linenos">26</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq-27"><a href="#dbcq-27"><span class="linenos">27</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">hasini</span><span class="p">()</span>
-</span><span id="dbcq-28"><a href="#dbcq-28"><span class="linenos">28</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">inipath</span><span class="p">():</span>
-</span><span id="dbcq-29"><a href="#dbcq-29"><span class="linenos">29</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq-30"><a href="#dbcq-30"><span class="linenos">30</span></a><span class="sd">        inipath gives the path where dbcq looks for the .dbc ini file (usually in the home).</span>
-</span><span id="dbcq-31"><a href="#dbcq-31"><span class="linenos">31</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq-32"><a href="#dbcq-32"><span class="linenos">32</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">inipath</span><span class="p">()</span>
-</span><span id="dbcq-33"><a href="#dbcq-33"><span class="linenos">33</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">targets</span><span class="p">():</span>
-</span><span id="dbcq-34"><a href="#dbcq-34"><span class="linenos">34</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq-35"><a href="#dbcq-35"><span class="linenos">35</span></a><span class="sd">        targets gives the db targets from .dbc ini file.</span>
-</span><span id="dbcq-36"><a href="#dbcq-36"><span class="linenos">36</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq-37"><a href="#dbcq-37"><span class="linenos">37</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">targets</span><span class="p">()</span>
-</span><span id="dbcq-38"><a href="#dbcq-38"><span class="linenos">38</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
-</span><span id="dbcq-39"><a href="#dbcq-39"><span class="linenos">39</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq-40"><a href="#dbcq-40"><span class="linenos">40</span></a><span class="sd">        query executes query with optional values.</span>
-</span><span id="dbcq-41"><a href="#dbcq-41"><span class="linenos">41</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq-42"><a href="#dbcq-42"><span class="linenos">42</span></a>        <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-</span><span id="dbcq-43"><a href="#dbcq-43"><span class="linenos">43</span></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</span><span id="dbcq-44"><a href="#dbcq-44"><span class="linenos">44</span></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
-</span><span id="dbcq-45"><a href="#dbcq-45"><span class="linenos">45</span></a>            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</span><span id="dbcq-46"><a href="#dbcq-46"><span class="linenos">46</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">qfa</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
-</span><span id="dbcq-47"><a href="#dbcq-47"><span class="linenos">47</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq-48"><a href="#dbcq-48"><span class="linenos">48</span></a><span class="sd">        qfa (query-fetch-all) executes query with optional values and returns</span>
-</span><span id="dbcq-49"><a href="#dbcq-49"><span class="linenos">49</span></a><span class="sd">        the results.</span>
-</span><span id="dbcq-50"><a href="#dbcq-50"><span class="linenos">50</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq-51"><a href="#dbcq-51"><span class="linenos">51</span></a>        <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-</span><span id="dbcq-52"><a href="#dbcq-52"><span class="linenos">52</span></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</span><span id="dbcq-53"><a href="#dbcq-53"><span class="linenos">53</span></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
-</span><span id="dbcq-54"><a href="#dbcq-54"><span class="linenos">54</span></a>            <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
-</span><span id="dbcq-55"><a href="#dbcq-55"><span class="linenos">55</span></a>            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</span><span id="dbcq-56"><a href="#dbcq-56"><span class="linenos">56</span></a>
-</span><span id="dbcq-57"><a href="#dbcq-57"><span class="linenos">57</span></a>            <span class="k">return</span> <span class="n">rows</span>
-</span><span id="dbcq-58"><a href="#dbcq-58"><span class="linenos">58</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">qfad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
-</span><span id="dbcq-59"><a href="#dbcq-59"><span class="linenos">59</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq-60"><a href="#dbcq-60"><span class="linenos">60</span></a><span class="sd">        qfad (query-fetch-all-dict) returns query results as an array of dicts,</span>
-</span><span id="dbcq-61"><a href="#dbcq-61"><span class="linenos">61</span></a><span class="sd">        e.g. for json parsing.</span>
-</span><span id="dbcq-62"><a href="#dbcq-62"><span class="linenos">62</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq-63"><a href="#dbcq-63"><span class="linenos">63</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;mssql&quot;</span><span class="p">:</span>
-</span><span id="dbcq-64"><a href="#dbcq-64"><span class="linenos">64</span></a>            <span class="n">rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qfa</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
-</span><span id="dbcq-65"><a href="#dbcq-65"><span class="linenos">65</span></a>            <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_row_to_dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
-</span><span id="dbcq-66"><a href="#dbcq-66"><span class="linenos">66</span></a>            <span class="k">return</span> <span class="n">dicts</span>
-</span><span id="dbcq-67"><a href="#dbcq-67"><span class="linenos">67</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;sqlite&quot;</span><span class="p">:</span>
-</span><span id="dbcq-68"><a href="#dbcq-68"><span class="linenos">68</span></a>            <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-</span><span id="dbcq-69"><a href="#dbcq-69"><span class="linenos">69</span></a>                <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</span><span id="dbcq-70"><a href="#dbcq-70"><span class="linenos">70</span></a>                <span class="n">cursor</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
-</span><span id="dbcq-71"><a href="#dbcq-71"><span class="linenos">71</span></a>                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="c1"># pass as tuple, see https://stackoverflow.com/a/16856730</span>
-</span><span id="dbcq-72"><a href="#dbcq-72"><span class="linenos">72</span></a>                <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
-</span><span id="dbcq-73"><a href="#dbcq-73"><span class="linenos">73</span></a>                <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</span><span id="dbcq-74"><a href="#dbcq-74"><span class="linenos">74</span></a>
-</span><span id="dbcq-75"><a href="#dbcq-75"><span class="linenos">75</span></a>                <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
-</span><span id="dbcq-76"><a href="#dbcq-76"><span class="linenos">76</span></a>                <span class="k">return</span> <span class="n">dicts</span>
-</span><span id="dbcq-77"><a href="#dbcq-77"><span class="linenos">77</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="dbcq-78"><a href="#dbcq-78"><span class="linenos">78</span></a>              <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;db type </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is currently not supported.&quot;</span><span class="p">)</span>
-</span><span id="dbcq-79"><a href="#dbcq-79"><span class="linenos">79</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="dbcq-80"><a href="#dbcq-80"><span class="linenos">80</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq-81"><a href="#dbcq-81"><span class="linenos">81</span></a><span class="sd">        info returns database info.</span>
-</span><span id="dbcq-82"><a href="#dbcq-82"><span class="linenos">82</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq-83"><a href="#dbcq-83"><span class="linenos">83</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span>
-</span><span id="dbcq-84"><a href="#dbcq-84"><span class="linenos">84</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_row_to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
-</span><span id="dbcq-85"><a href="#dbcq-85"><span class="linenos">85</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq-86"><a href="#dbcq-86"><span class="linenos">86</span></a><span class="sd">        _row_to_dict turns pyodbc-rows to dict:</span>
-</span><span id="dbcq-87"><a href="#dbcq-87"><span class="linenos">87</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq-88"><a href="#dbcq-88"><span class="linenos">88</span></a>        <span class="c1"># lowercase column names</span>
-</span><span id="dbcq-89"><a href="#dbcq-89"><span class="linenos">89</span></a>        <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">cursor_description</span><span class="p">]</span>
-</span><span id="dbcq-90"><a href="#dbcq-90"><span class="linenos">90</span></a>        <span class="c1"># use column names as dict keys</span>
-</span><span id="dbcq-91"><a href="#dbcq-91"><span class="linenos">91</span></a>        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">],</span> <span class="n">row</span><span class="p">))</span>
+</span><span id="dbcq-7"><a href="#dbcq-7"><span class="linenos"> 7</span></a><span class="sd">        __init__ opens a db connection to a target from .dbc.</span>
+</span><span id="dbcq-8"><a href="#dbcq-8"><span class="linenos"> 8</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq-9"><a href="#dbcq-9"><span class="linenos"> 9</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">hasini</span><span class="p">():</span>
+</span><span id="dbcq-10"><a href="#dbcq-10"><span class="linenos">10</span></a>            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;dbcq: </span><span class="si">{</span><span class="n">dbcq</span><span class="o">.</span><span class="n">inipath</span><span class="p">()</span><span class="si">}</span><span class="s2"> not found. please create the file and fill in:</span>
+</span><span id="dbcq-11"><a href="#dbcq-11"><span class="linenos">11</span></a><span class="s2">[&lt;target name&gt;]</span>
+</span><span id="dbcq-12"><a href="#dbcq-12"><span class="linenos">12</span></a><span class="s2">type = &lt;mssql|sqlite&gt;</span>
+</span><span id="dbcq-13"><a href="#dbcq-13"><span class="linenos">13</span></a><span class="s2">database = &lt;database name&gt;</span>
+</span><span id="dbcq-14"><a href="#dbcq-14"><span class="linenos">14</span></a><span class="s2">username = &lt;user name&gt;</span>
+</span><span id="dbcq-15"><a href="#dbcq-15"><span class="linenos">15</span></a><span class="s2">password = &lt;password&gt;</span>
+</span><span id="dbcq-16"><a href="#dbcq-16"><span class="linenos">16</span></a><span class="s2">server = &lt;ip address&gt;</span>
+</span><span id="dbcq-17"><a href="#dbcq-17"><span class="linenos">17</span></a><span class="s2">port = &lt;port&gt;</span>
+</span><span id="dbcq-18"><a href="#dbcq-18"><span class="linenos">18</span></a><span class="s2">driver = &lt;driver&gt;&quot;&quot;&quot;</span>
+</span><span id="dbcq-19"><a href="#dbcq-19"><span class="linenos">19</span></a>            <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span id="dbcq-20"><a href="#dbcq-20"><span class="linenos">20</span></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;no .dbc file&quot;</span><span class="p">)</span>
+</span><span id="dbcq-21"><a href="#dbcq-21"><span class="linenos">21</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span>
+</span><span id="dbcq-22"><a href="#dbcq-22"><span class="linenos">22</span></a>        <span class="k">if</span> <span class="n">target</span><span class="p">:</span>
+</span><span id="dbcq-23"><a href="#dbcq-23"><span class="linenos">23</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">dbinfo</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+</span><span id="dbcq-24"><a href="#dbcq-24"><span class="linenos">24</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">hasini</span><span class="p">():</span>
+</span><span id="dbcq-25"><a href="#dbcq-25"><span class="linenos">25</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq-26"><a href="#dbcq-26"><span class="linenos">26</span></a><span class="sd">        hasini returns whether there is a .dbc ini file in the home.</span>
+</span><span id="dbcq-27"><a href="#dbcq-27"><span class="linenos">27</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq-28"><a href="#dbcq-28"><span class="linenos">28</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">hasini</span><span class="p">()</span>
+</span><span id="dbcq-29"><a href="#dbcq-29"><span class="linenos">29</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">inipath</span><span class="p">():</span>
+</span><span id="dbcq-30"><a href="#dbcq-30"><span class="linenos">30</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq-31"><a href="#dbcq-31"><span class="linenos">31</span></a><span class="sd">        inipath gives the path where dbcq looks for the .dbc ini file (usually in the home).</span>
+</span><span id="dbcq-32"><a href="#dbcq-32"><span class="linenos">32</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq-33"><a href="#dbcq-33"><span class="linenos">33</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">inipath</span><span class="p">()</span>
+</span><span id="dbcq-34"><a href="#dbcq-34"><span class="linenos">34</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">targets</span><span class="p">():</span>
+</span><span id="dbcq-35"><a href="#dbcq-35"><span class="linenos">35</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq-36"><a href="#dbcq-36"><span class="linenos">36</span></a><span class="sd">        targets gives the db targets from .dbc ini file.</span>
+</span><span id="dbcq-37"><a href="#dbcq-37"><span class="linenos">37</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq-38"><a href="#dbcq-38"><span class="linenos">38</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">targets</span><span class="p">()</span>
+</span><span id="dbcq-39"><a href="#dbcq-39"><span class="linenos">39</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
+</span><span id="dbcq-40"><a href="#dbcq-40"><span class="linenos">40</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq-41"><a href="#dbcq-41"><span class="linenos">41</span></a><span class="sd">        query executes query with optional values.</span>
+</span><span id="dbcq-42"><a href="#dbcq-42"><span class="linenos">42</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq-43"><a href="#dbcq-43"><span class="linenos">43</span></a>        <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+</span><span id="dbcq-44"><a href="#dbcq-44"><span class="linenos">44</span></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span id="dbcq-45"><a href="#dbcq-45"><span class="linenos">45</span></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
+</span><span id="dbcq-46"><a href="#dbcq-46"><span class="linenos">46</span></a>            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span id="dbcq-47"><a href="#dbcq-47"><span class="linenos">47</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">qfa</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
+</span><span id="dbcq-48"><a href="#dbcq-48"><span class="linenos">48</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq-49"><a href="#dbcq-49"><span class="linenos">49</span></a><span class="sd">        qfa (query-fetch-all) executes a query with optional values and returns</span>
+</span><span id="dbcq-50"><a href="#dbcq-50"><span class="linenos">50</span></a><span class="sd">        the results.</span>
+</span><span id="dbcq-51"><a href="#dbcq-51"><span class="linenos">51</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq-52"><a href="#dbcq-52"><span class="linenos">52</span></a>        <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+</span><span id="dbcq-53"><a href="#dbcq-53"><span class="linenos">53</span></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span id="dbcq-54"><a href="#dbcq-54"><span class="linenos">54</span></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
+</span><span id="dbcq-55"><a href="#dbcq-55"><span class="linenos">55</span></a>            <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span><span id="dbcq-56"><a href="#dbcq-56"><span class="linenos">56</span></a>            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span id="dbcq-57"><a href="#dbcq-57"><span class="linenos">57</span></a>
+</span><span id="dbcq-58"><a href="#dbcq-58"><span class="linenos">58</span></a>            <span class="k">return</span> <span class="n">rows</span>
+</span><span id="dbcq-59"><a href="#dbcq-59"><span class="linenos">59</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">qfad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
+</span><span id="dbcq-60"><a href="#dbcq-60"><span class="linenos">60</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq-61"><a href="#dbcq-61"><span class="linenos">61</span></a><span class="sd">        qfad (query-fetch-all-dict) returns the query results as an array of dicts,</span>
+</span><span id="dbcq-62"><a href="#dbcq-62"><span class="linenos">62</span></a><span class="sd">        e.g. for json parsing.</span>
+</span><span id="dbcq-63"><a href="#dbcq-63"><span class="linenos">63</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq-64"><a href="#dbcq-64"><span class="linenos">64</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;mssql&quot;</span><span class="p">:</span>
+</span><span id="dbcq-65"><a href="#dbcq-65"><span class="linenos">65</span></a>            <span class="n">rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qfa</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
+</span><span id="dbcq-66"><a href="#dbcq-66"><span class="linenos">66</span></a>            <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_row_to_dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+</span><span id="dbcq-67"><a href="#dbcq-67"><span class="linenos">67</span></a>            <span class="k">return</span> <span class="n">dicts</span>
+</span><span id="dbcq-68"><a href="#dbcq-68"><span class="linenos">68</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;sqlite&quot;</span><span class="p">:</span>
+</span><span id="dbcq-69"><a href="#dbcq-69"><span class="linenos">69</span></a>            <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+</span><span id="dbcq-70"><a href="#dbcq-70"><span class="linenos">70</span></a>                <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span id="dbcq-71"><a href="#dbcq-71"><span class="linenos">71</span></a>                <span class="n">cursor</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
+</span><span id="dbcq-72"><a href="#dbcq-72"><span class="linenos">72</span></a>                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="c1"># pass as tuple, see https://stackoverflow.com/a/16856730</span>
+</span><span id="dbcq-73"><a href="#dbcq-73"><span class="linenos">73</span></a>                <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span><span id="dbcq-74"><a href="#dbcq-74"><span class="linenos">74</span></a>                <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span id="dbcq-75"><a href="#dbcq-75"><span class="linenos">75</span></a>
+</span><span id="dbcq-76"><a href="#dbcq-76"><span class="linenos">76</span></a>                <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+</span><span id="dbcq-77"><a href="#dbcq-77"><span class="linenos">77</span></a>                <span class="k">return</span> <span class="n">dicts</span>
+</span><span id="dbcq-78"><a href="#dbcq-78"><span class="linenos">78</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="dbcq-79"><a href="#dbcq-79"><span class="linenos">79</span></a>              <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;db type </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is currently not supported.&quot;</span><span class="p">)</span>
+</span><span id="dbcq-80"><a href="#dbcq-80"><span class="linenos">80</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="dbcq-81"><a href="#dbcq-81"><span class="linenos">81</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq-82"><a href="#dbcq-82"><span class="linenos">82</span></a><span class="sd">        info returns database info.</span>
+</span><span id="dbcq-83"><a href="#dbcq-83"><span class="linenos">83</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq-84"><a href="#dbcq-84"><span class="linenos">84</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span>
+</span><span id="dbcq-85"><a href="#dbcq-85"><span class="linenos">85</span></a>    
+</span><span id="dbcq-86"><a href="#dbcq-86"><span class="linenos">86</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_row_to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
+</span><span id="dbcq-87"><a href="#dbcq-87"><span class="linenos">87</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq-88"><a href="#dbcq-88"><span class="linenos">88</span></a><span class="sd">        _row_to_dict turns pyodbc-rows to dict:</span>
+</span><span id="dbcq-89"><a href="#dbcq-89"><span class="linenos">89</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq-90"><a href="#dbcq-90"><span class="linenos">90</span></a>        <span class="c1"># lowercase column names</span>
+</span><span id="dbcq-91"><a href="#dbcq-91"><span class="linenos">91</span></a>        <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">cursor_description</span><span class="p">]</span>
+</span><span id="dbcq-92"><a href="#dbcq-92"><span class="linenos">92</span></a>        <span class="c1"># use column names as dict keys</span>
+</span><span id="dbcq-93"><a href="#dbcq-93"><span class="linenos">93</span></a>        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">],</span> <span class="n">row</span><span class="p">))</span>
 </span></pre></div>
 
 
@@ -289,26 +293,29 @@ dbcq    </h1>
     <a class="headerlink" href="#dbcq.__init__"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.__init__-5"><a href="#dbcq.__init__-5"><span class="linenos"> 5</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
 </span><span id="dbcq.__init__-6"><a href="#dbcq.__init__-6"><span class="linenos"> 6</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq.__init__-7"><a href="#dbcq.__init__-7"><span class="linenos"> 7</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq.__init__-8"><a href="#dbcq.__init__-8"><span class="linenos"> 8</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">hasini</span><span class="p">():</span>
-</span><span id="dbcq.__init__-9"><a href="#dbcq.__init__-9"><span class="linenos"> 9</span></a>            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;dbcq: </span><span class="si">{</span><span class="n">dbcq</span><span class="o">.</span><span class="n">inipath</span><span class="p">()</span><span class="si">}</span><span class="s2"> not found. please create the file and fill in:</span>
-</span><span id="dbcq.__init__-10"><a href="#dbcq.__init__-10"><span class="linenos">10</span></a><span class="s2">[&lt;target name&gt;]</span>
-</span><span id="dbcq.__init__-11"><a href="#dbcq.__init__-11"><span class="linenos">11</span></a><span class="s2">type = &lt;mssql|sqlite&gt;</span>
-</span><span id="dbcq.__init__-12"><a href="#dbcq.__init__-12"><span class="linenos">12</span></a><span class="s2">database = &lt;database name&gt;</span>
-</span><span id="dbcq.__init__-13"><a href="#dbcq.__init__-13"><span class="linenos">13</span></a><span class="s2">username = &lt;user name&gt;</span>
-</span><span id="dbcq.__init__-14"><a href="#dbcq.__init__-14"><span class="linenos">14</span></a><span class="s2">password = &lt;password&gt;</span>
-</span><span id="dbcq.__init__-15"><a href="#dbcq.__init__-15"><span class="linenos">15</span></a><span class="s2">server = &lt;ip address&gt;</span>
-</span><span id="dbcq.__init__-16"><a href="#dbcq.__init__-16"><span class="linenos">16</span></a><span class="s2">port = &lt;port&gt;</span>
-</span><span id="dbcq.__init__-17"><a href="#dbcq.__init__-17"><span class="linenos">17</span></a><span class="s2">driver = &lt;driver&gt;&quot;&quot;&quot;</span>
-</span><span id="dbcq.__init__-18"><a href="#dbcq.__init__-18"><span class="linenos">18</span></a>            <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</span><span id="dbcq.__init__-19"><a href="#dbcq.__init__-19"><span class="linenos">19</span></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;no .dbc file&quot;</span><span class="p">)</span>
-</span><span id="dbcq.__init__-20"><a href="#dbcq.__init__-20"><span class="linenos">20</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span>
-</span><span id="dbcq.__init__-21"><a href="#dbcq.__init__-21"><span class="linenos">21</span></a>        <span class="k">if</span> <span class="n">target</span><span class="p">:</span>
-</span><span id="dbcq.__init__-22"><a href="#dbcq.__init__-22"><span class="linenos">22</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">dbinfo</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+</span><span id="dbcq.__init__-7"><a href="#dbcq.__init__-7"><span class="linenos"> 7</span></a><span class="sd">        __init__ opens a db connection to a target from .dbc.</span>
+</span><span id="dbcq.__init__-8"><a href="#dbcq.__init__-8"><span class="linenos"> 8</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq.__init__-9"><a href="#dbcq.__init__-9"><span class="linenos"> 9</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">hasini</span><span class="p">():</span>
+</span><span id="dbcq.__init__-10"><a href="#dbcq.__init__-10"><span class="linenos">10</span></a>            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;dbcq: </span><span class="si">{</span><span class="n">dbcq</span><span class="o">.</span><span class="n">inipath</span><span class="p">()</span><span class="si">}</span><span class="s2"> not found. please create the file and fill in:</span>
+</span><span id="dbcq.__init__-11"><a href="#dbcq.__init__-11"><span class="linenos">11</span></a><span class="s2">[&lt;target name&gt;]</span>
+</span><span id="dbcq.__init__-12"><a href="#dbcq.__init__-12"><span class="linenos">12</span></a><span class="s2">type = &lt;mssql|sqlite&gt;</span>
+</span><span id="dbcq.__init__-13"><a href="#dbcq.__init__-13"><span class="linenos">13</span></a><span class="s2">database = &lt;database name&gt;</span>
+</span><span id="dbcq.__init__-14"><a href="#dbcq.__init__-14"><span class="linenos">14</span></a><span class="s2">username = &lt;user name&gt;</span>
+</span><span id="dbcq.__init__-15"><a href="#dbcq.__init__-15"><span class="linenos">15</span></a><span class="s2">password = &lt;password&gt;</span>
+</span><span id="dbcq.__init__-16"><a href="#dbcq.__init__-16"><span class="linenos">16</span></a><span class="s2">server = &lt;ip address&gt;</span>
+</span><span id="dbcq.__init__-17"><a href="#dbcq.__init__-17"><span class="linenos">17</span></a><span class="s2">port = &lt;port&gt;</span>
+</span><span id="dbcq.__init__-18"><a href="#dbcq.__init__-18"><span class="linenos">18</span></a><span class="s2">driver = &lt;driver&gt;&quot;&quot;&quot;</span>
+</span><span id="dbcq.__init__-19"><a href="#dbcq.__init__-19"><span class="linenos">19</span></a>            <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span id="dbcq.__init__-20"><a href="#dbcq.__init__-20"><span class="linenos">20</span></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;no .dbc file&quot;</span><span class="p">)</span>
+</span><span id="dbcq.__init__-21"><a href="#dbcq.__init__-21"><span class="linenos">21</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span>
+</span><span id="dbcq.__init__-22"><a href="#dbcq.__init__-22"><span class="linenos">22</span></a>        <span class="k">if</span> <span class="n">target</span><span class="p">:</span>
+</span><span id="dbcq.__init__-23"><a href="#dbcq.__init__-23"><span class="linenos">23</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">dbinfo</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
 </span></pre></div>
 
 
-    
+            <div class="docstring"><p>__init__ opens a db connection to a target from .dbc.</p>
+</div>
+
 
                             </div>
                             <div id="dbcq.target" class="classattr">
@@ -333,11 +340,11 @@ dbcq    </h1>
 
     </div>
     <a class="headerlink" href="#dbcq.hasini"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.hasini-23"><a href="#dbcq.hasini-23"><span class="linenos">23</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">hasini</span><span class="p">():</span>
-</span><span id="dbcq.hasini-24"><a href="#dbcq.hasini-24"><span class="linenos">24</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq.hasini-25"><a href="#dbcq.hasini-25"><span class="linenos">25</span></a><span class="sd">        hasini returns whether there is a .dbc ini file in the home.</span>
-</span><span id="dbcq.hasini-26"><a href="#dbcq.hasini-26"><span class="linenos">26</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq.hasini-27"><a href="#dbcq.hasini-27"><span class="linenos">27</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">hasini</span><span class="p">()</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.hasini-24"><a href="#dbcq.hasini-24"><span class="linenos">24</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">hasini</span><span class="p">():</span>
+</span><span id="dbcq.hasini-25"><a href="#dbcq.hasini-25"><span class="linenos">25</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq.hasini-26"><a href="#dbcq.hasini-26"><span class="linenos">26</span></a><span class="sd">        hasini returns whether there is a .dbc ini file in the home.</span>
+</span><span id="dbcq.hasini-27"><a href="#dbcq.hasini-27"><span class="linenos">27</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq.hasini-28"><a href="#dbcq.hasini-28"><span class="linenos">28</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">hasini</span><span class="p">()</span>
 </span></pre></div>
 
 
@@ -357,11 +364,11 @@ dbcq    </h1>
 
     </div>
     <a class="headerlink" href="#dbcq.inipath"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.inipath-28"><a href="#dbcq.inipath-28"><span class="linenos">28</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">inipath</span><span class="p">():</span>
-</span><span id="dbcq.inipath-29"><a href="#dbcq.inipath-29"><span class="linenos">29</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq.inipath-30"><a href="#dbcq.inipath-30"><span class="linenos">30</span></a><span class="sd">        inipath gives the path where dbcq looks for the .dbc ini file (usually in the home).</span>
-</span><span id="dbcq.inipath-31"><a href="#dbcq.inipath-31"><span class="linenos">31</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq.inipath-32"><a href="#dbcq.inipath-32"><span class="linenos">32</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">inipath</span><span class="p">()</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.inipath-29"><a href="#dbcq.inipath-29"><span class="linenos">29</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">inipath</span><span class="p">():</span>
+</span><span id="dbcq.inipath-30"><a href="#dbcq.inipath-30"><span class="linenos">30</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq.inipath-31"><a href="#dbcq.inipath-31"><span class="linenos">31</span></a><span class="sd">        inipath gives the path where dbcq looks for the .dbc ini file (usually in the home).</span>
+</span><span id="dbcq.inipath-32"><a href="#dbcq.inipath-32"><span class="linenos">32</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq.inipath-33"><a href="#dbcq.inipath-33"><span class="linenos">33</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">inipath</span><span class="p">()</span>
 </span></pre></div>
 
 
@@ -381,11 +388,11 @@ dbcq    </h1>
 
     </div>
     <a class="headerlink" href="#dbcq.targets"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.targets-33"><a href="#dbcq.targets-33"><span class="linenos">33</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">targets</span><span class="p">():</span>
-</span><span id="dbcq.targets-34"><a href="#dbcq.targets-34"><span class="linenos">34</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq.targets-35"><a href="#dbcq.targets-35"><span class="linenos">35</span></a><span class="sd">        targets gives the db targets from .dbc ini file.</span>
-</span><span id="dbcq.targets-36"><a href="#dbcq.targets-36"><span class="linenos">36</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq.targets-37"><a href="#dbcq.targets-37"><span class="linenos">37</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">targets</span><span class="p">()</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.targets-34"><a href="#dbcq.targets-34"><span class="linenos">34</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">targets</span><span class="p">():</span>
+</span><span id="dbcq.targets-35"><a href="#dbcq.targets-35"><span class="linenos">35</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq.targets-36"><a href="#dbcq.targets-36"><span class="linenos">36</span></a><span class="sd">        targets gives the db targets from .dbc ini file.</span>
+</span><span id="dbcq.targets-37"><a href="#dbcq.targets-37"><span class="linenos">37</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq.targets-38"><a href="#dbcq.targets-38"><span class="linenos">38</span></a>        <span class="k">return</span> <span class="n">_dbc</span><span class="o">.</span><span class="n">targets</span><span class="p">()</span>
 </span></pre></div>
 
 
@@ -405,14 +412,14 @@ dbcq    </h1>
 
     </div>
     <a class="headerlink" href="#dbcq.query"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.query-38"><a href="#dbcq.query-38"><span class="linenos">38</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
-</span><span id="dbcq.query-39"><a href="#dbcq.query-39"><span class="linenos">39</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq.query-40"><a href="#dbcq.query-40"><span class="linenos">40</span></a><span class="sd">        query executes query with optional values.</span>
-</span><span id="dbcq.query-41"><a href="#dbcq.query-41"><span class="linenos">41</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq.query-42"><a href="#dbcq.query-42"><span class="linenos">42</span></a>        <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-</span><span id="dbcq.query-43"><a href="#dbcq.query-43"><span class="linenos">43</span></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</span><span id="dbcq.query-44"><a href="#dbcq.query-44"><span class="linenos">44</span></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
-</span><span id="dbcq.query-45"><a href="#dbcq.query-45"><span class="linenos">45</span></a>            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.query-39"><a href="#dbcq.query-39"><span class="linenos">39</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
+</span><span id="dbcq.query-40"><a href="#dbcq.query-40"><span class="linenos">40</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq.query-41"><a href="#dbcq.query-41"><span class="linenos">41</span></a><span class="sd">        query executes query with optional values.</span>
+</span><span id="dbcq.query-42"><a href="#dbcq.query-42"><span class="linenos">42</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq.query-43"><a href="#dbcq.query-43"><span class="linenos">43</span></a>        <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+</span><span id="dbcq.query-44"><a href="#dbcq.query-44"><span class="linenos">44</span></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span id="dbcq.query-45"><a href="#dbcq.query-45"><span class="linenos">45</span></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
+</span><span id="dbcq.query-46"><a href="#dbcq.query-46"><span class="linenos">46</span></a>            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </span></pre></div>
 
 
@@ -432,22 +439,22 @@ dbcq    </h1>
 
     </div>
     <a class="headerlink" href="#dbcq.qfa"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.qfa-46"><a href="#dbcq.qfa-46"><span class="linenos">46</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">qfa</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
-</span><span id="dbcq.qfa-47"><a href="#dbcq.qfa-47"><span class="linenos">47</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq.qfa-48"><a href="#dbcq.qfa-48"><span class="linenos">48</span></a><span class="sd">        qfa (query-fetch-all) executes query with optional values and returns</span>
-</span><span id="dbcq.qfa-49"><a href="#dbcq.qfa-49"><span class="linenos">49</span></a><span class="sd">        the results.</span>
-</span><span id="dbcq.qfa-50"><a href="#dbcq.qfa-50"><span class="linenos">50</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq.qfa-51"><a href="#dbcq.qfa-51"><span class="linenos">51</span></a>        <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-</span><span id="dbcq.qfa-52"><a href="#dbcq.qfa-52"><span class="linenos">52</span></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</span><span id="dbcq.qfa-53"><a href="#dbcq.qfa-53"><span class="linenos">53</span></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
-</span><span id="dbcq.qfa-54"><a href="#dbcq.qfa-54"><span class="linenos">54</span></a>            <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
-</span><span id="dbcq.qfa-55"><a href="#dbcq.qfa-55"><span class="linenos">55</span></a>            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</span><span id="dbcq.qfa-56"><a href="#dbcq.qfa-56"><span class="linenos">56</span></a>
-</span><span id="dbcq.qfa-57"><a href="#dbcq.qfa-57"><span class="linenos">57</span></a>            <span class="k">return</span> <span class="n">rows</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.qfa-47"><a href="#dbcq.qfa-47"><span class="linenos">47</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">qfa</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
+</span><span id="dbcq.qfa-48"><a href="#dbcq.qfa-48"><span class="linenos">48</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq.qfa-49"><a href="#dbcq.qfa-49"><span class="linenos">49</span></a><span class="sd">        qfa (query-fetch-all) executes a query with optional values and returns</span>
+</span><span id="dbcq.qfa-50"><a href="#dbcq.qfa-50"><span class="linenos">50</span></a><span class="sd">        the results.</span>
+</span><span id="dbcq.qfa-51"><a href="#dbcq.qfa-51"><span class="linenos">51</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq.qfa-52"><a href="#dbcq.qfa-52"><span class="linenos">52</span></a>        <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+</span><span id="dbcq.qfa-53"><a href="#dbcq.qfa-53"><span class="linenos">53</span></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span id="dbcq.qfa-54"><a href="#dbcq.qfa-54"><span class="linenos">54</span></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
+</span><span id="dbcq.qfa-55"><a href="#dbcq.qfa-55"><span class="linenos">55</span></a>            <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span><span id="dbcq.qfa-56"><a href="#dbcq.qfa-56"><span class="linenos">56</span></a>            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span id="dbcq.qfa-57"><a href="#dbcq.qfa-57"><span class="linenos">57</span></a>
+</span><span id="dbcq.qfa-58"><a href="#dbcq.qfa-58"><span class="linenos">58</span></a>            <span class="k">return</span> <span class="n">rows</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>qfa (query-fetch-all) executes query with optional values and returns
+            <div class="docstring"><p>qfa (query-fetch-all) executes a query with optional values and returns
 the results.</p>
 </div>
 
@@ -464,31 +471,31 @@ the results.</p>
 
     </div>
     <a class="headerlink" href="#dbcq.qfad"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.qfad-58"><a href="#dbcq.qfad-58"><span class="linenos">58</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">qfad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
-</span><span id="dbcq.qfad-59"><a href="#dbcq.qfad-59"><span class="linenos">59</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq.qfad-60"><a href="#dbcq.qfad-60"><span class="linenos">60</span></a><span class="sd">        qfad (query-fetch-all-dict) returns query results as an array of dicts,</span>
-</span><span id="dbcq.qfad-61"><a href="#dbcq.qfad-61"><span class="linenos">61</span></a><span class="sd">        e.g. for json parsing.</span>
-</span><span id="dbcq.qfad-62"><a href="#dbcq.qfad-62"><span class="linenos">62</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq.qfad-63"><a href="#dbcq.qfad-63"><span class="linenos">63</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;mssql&quot;</span><span class="p">:</span>
-</span><span id="dbcq.qfad-64"><a href="#dbcq.qfad-64"><span class="linenos">64</span></a>            <span class="n">rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qfa</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
-</span><span id="dbcq.qfad-65"><a href="#dbcq.qfad-65"><span class="linenos">65</span></a>            <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_row_to_dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
-</span><span id="dbcq.qfad-66"><a href="#dbcq.qfad-66"><span class="linenos">66</span></a>            <span class="k">return</span> <span class="n">dicts</span>
-</span><span id="dbcq.qfad-67"><a href="#dbcq.qfad-67"><span class="linenos">67</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;sqlite&quot;</span><span class="p">:</span>
-</span><span id="dbcq.qfad-68"><a href="#dbcq.qfad-68"><span class="linenos">68</span></a>            <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-</span><span id="dbcq.qfad-69"><a href="#dbcq.qfad-69"><span class="linenos">69</span></a>                <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</span><span id="dbcq.qfad-70"><a href="#dbcq.qfad-70"><span class="linenos">70</span></a>                <span class="n">cursor</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
-</span><span id="dbcq.qfad-71"><a href="#dbcq.qfad-71"><span class="linenos">71</span></a>                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="c1"># pass as tuple, see https://stackoverflow.com/a/16856730</span>
-</span><span id="dbcq.qfad-72"><a href="#dbcq.qfad-72"><span class="linenos">72</span></a>                <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
-</span><span id="dbcq.qfad-73"><a href="#dbcq.qfad-73"><span class="linenos">73</span></a>                <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</span><span id="dbcq.qfad-74"><a href="#dbcq.qfad-74"><span class="linenos">74</span></a>
-</span><span id="dbcq.qfad-75"><a href="#dbcq.qfad-75"><span class="linenos">75</span></a>                <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
-</span><span id="dbcq.qfad-76"><a href="#dbcq.qfad-76"><span class="linenos">76</span></a>                <span class="k">return</span> <span class="n">dicts</span>
-</span><span id="dbcq.qfad-77"><a href="#dbcq.qfad-77"><span class="linenos">77</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="dbcq.qfad-78"><a href="#dbcq.qfad-78"><span class="linenos">78</span></a>              <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;db type </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is currently not supported.&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.qfad-59"><a href="#dbcq.qfad-59"><span class="linenos">59</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">qfad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">):</span>
+</span><span id="dbcq.qfad-60"><a href="#dbcq.qfad-60"><span class="linenos">60</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq.qfad-61"><a href="#dbcq.qfad-61"><span class="linenos">61</span></a><span class="sd">        qfad (query-fetch-all-dict) returns the query results as an array of dicts,</span>
+</span><span id="dbcq.qfad-62"><a href="#dbcq.qfad-62"><span class="linenos">62</span></a><span class="sd">        e.g. for json parsing.</span>
+</span><span id="dbcq.qfad-63"><a href="#dbcq.qfad-63"><span class="linenos">63</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq.qfad-64"><a href="#dbcq.qfad-64"><span class="linenos">64</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;mssql&quot;</span><span class="p">:</span>
+</span><span id="dbcq.qfad-65"><a href="#dbcq.qfad-65"><span class="linenos">65</span></a>            <span class="n">rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qfa</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
+</span><span id="dbcq.qfad-66"><a href="#dbcq.qfad-66"><span class="linenos">66</span></a>            <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_row_to_dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+</span><span id="dbcq.qfad-67"><a href="#dbcq.qfad-67"><span class="linenos">67</span></a>            <span class="k">return</span> <span class="n">dicts</span>
+</span><span id="dbcq.qfad-68"><a href="#dbcq.qfad-68"><span class="linenos">68</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;sqlite&quot;</span><span class="p">:</span>
+</span><span id="dbcq.qfad-69"><a href="#dbcq.qfad-69"><span class="linenos">69</span></a>            <span class="k">with</span> <span class="n">dbconnect</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+</span><span id="dbcq.qfad-70"><a href="#dbcq.qfad-70"><span class="linenos">70</span></a>                <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span id="dbcq.qfad-71"><a href="#dbcq.qfad-71"><span class="linenos">71</span></a>                <span class="n">cursor</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
+</span><span id="dbcq.qfad-72"><a href="#dbcq.qfad-72"><span class="linenos">72</span></a>                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="c1"># pass as tuple, see https://stackoverflow.com/a/16856730</span>
+</span><span id="dbcq.qfad-73"><a href="#dbcq.qfad-73"><span class="linenos">73</span></a>                <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span><span id="dbcq.qfad-74"><a href="#dbcq.qfad-74"><span class="linenos">74</span></a>                <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span id="dbcq.qfad-75"><a href="#dbcq.qfad-75"><span class="linenos">75</span></a>
+</span><span id="dbcq.qfad-76"><a href="#dbcq.qfad-76"><span class="linenos">76</span></a>                <span class="n">dicts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+</span><span id="dbcq.qfad-77"><a href="#dbcq.qfad-77"><span class="linenos">77</span></a>                <span class="k">return</span> <span class="n">dicts</span>
+</span><span id="dbcq.qfad-78"><a href="#dbcq.qfad-78"><span class="linenos">78</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="dbcq.qfad-79"><a href="#dbcq.qfad-79"><span class="linenos">79</span></a>              <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;db type </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is currently not supported.&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>qfad (query-fetch-all-dict) returns query results as an array of dicts,
+            <div class="docstring"><p>qfad (query-fetch-all-dict) returns the query results as an array of dicts,
 e.g. for json parsing.</p>
 </div>
 
@@ -505,11 +512,11 @@ e.g. for json parsing.</p>
 
     </div>
     <a class="headerlink" href="#dbcq.info"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.info-79"><a href="#dbcq.info-79"><span class="linenos">79</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="dbcq.info-80"><a href="#dbcq.info-80"><span class="linenos">80</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dbcq.info-81"><a href="#dbcq.info-81"><span class="linenos">81</span></a><span class="sd">        info returns database info.</span>
-</span><span id="dbcq.info-82"><a href="#dbcq.info-82"><span class="linenos">82</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="dbcq.info-83"><a href="#dbcq.info-83"><span class="linenos">83</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dbcq.info-80"><a href="#dbcq.info-80"><span class="linenos">80</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="dbcq.info-81"><a href="#dbcq.info-81"><span class="linenos">81</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dbcq.info-82"><a href="#dbcq.info-82"><span class="linenos">82</span></a><span class="sd">        info returns database info.</span>
+</span><span id="dbcq.info-83"><a href="#dbcq.info-83"><span class="linenos">83</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="dbcq.info-84"><a href="#dbcq.info-84"><span class="linenos">84</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span>
 </span></pre></div>
 
 
