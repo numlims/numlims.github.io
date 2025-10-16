@@ -19,3 +19,5 @@ all:
 	cp -upr ~/traction/html/* traction/
 
 	gh-login numlims ~/github-token-numlims
+
+-- ":!makefile"  # exclude the makefile from add if the user might need to make edits specific for his or her setup
