@@ -43,6 +43,9 @@
                     <a class="function" href="#fromisoornone">fromisoornone</a>
             </li>
             <li>
+                    <a class="function" href="#is_nullish">is_nullish</a>
+            </li>
+            <li>
                     <a class="function" href="#open_csv_file">open_csv_file</a>
             </li>
     </ul>
@@ -75,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="k">def</span><span class="w"> </span><span class="nf">intornone</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;intornone parses a string to int, and letters A,B,C,... to numbers 1,2,3... if it receives None it returns None.&quot;&quot;&quot;</span>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>    <span class="c1">#  print(f&quot;intornone: {s}&quot;)</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>        <span class="k">return</span> <span class="kc">None</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[A-Za-z]$&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>        <span class="c1">#print(&quot;match letter&quot;)</span>
@@ -90,7 +93,7 @@
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>
 </span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="k">def</span><span class="w"> </span><span class="nf">datestring</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;datestring returns fhir-compatible date string of date.&quot;&quot;&quot;</span>    
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span> 
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="k">if</span> <span class="n">d</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>        <span class="k">return</span> <span class="kc">None</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="c1"># make the date time-zone aware (for utc +00:00 timezone)</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="c1"># d = d.replace(tzinfo=timezone.utc)</span>
@@ -111,27 +114,44 @@
 </span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid5</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">fromstr</span><span class="p">))</span>  <span class="c1"># Use uuid5 for deterministic ID generation</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>    
 </span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fromisoornone</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;fromisoornone returns a date from iso string or none if string is empty&quot;&quot;&quot;</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>        <span class="k">return</span> <span class="kc">None</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="k">def</span><span class="w"> </span><span class="nf">open_csv_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">    open_csv_file opens a CSV file and returns a DictReader object.</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="k">try</span><span class="p">:</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>        <span class="k">return</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> not found.&quot;</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error opening file </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fromisoornone</span><span class="p">(</span><span class="n">date_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;fromisoornone parses a ISO-8601 string or returns None if string is nullish.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">    Args:</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        date_str (str): The ISO-8601 date string.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">    Returns:</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        datetime or None: The parsed datetime object or None if input is nullish.   &quot;&quot;&quot;</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="k">if</span> <span class="n">is_nullish</span><span class="p">(</span><span class="n">date_str</span><span class="p">):</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>        <span class="k">return</span> <span class="kc">None</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">date_str</span><span class="p">)</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="k">def</span><span class="w"> </span><span class="nf">is_nullish</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks if the given string is None, empty or only contains whitespace </span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">        or is the string &#39;null&#39; (case insensitive).</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">    Args:</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">        value (str): The string to check.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="sd">    Returns:</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="sd">        bool: True if the string is nullish, False otherwise.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="k">return</span> <span class="kc">True</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;null&quot;</span><span class="p">:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="k">return</span> <span class="kc">True</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="k">return</span> <span class="kc">False</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a><span class="k">def</span><span class="w"> </span><span class="nf">open_csv_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a><span class="sd">    open_csv_file opens a CSV file and returns a DictReader object.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="k">return</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">)</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> not found.&quot;</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error opening file </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -150,7 +170,7 @@
             <div class="pdoc-code codehilite"><pre><span></span><span id="intornone-8"><a href="#intornone-8"><span class="linenos"> 8</span></a><span class="k">def</span><span class="w"> </span><span class="nf">intornone</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
 </span><span id="intornone-9"><a href="#intornone-9"><span class="linenos"> 9</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;intornone parses a string to int, and letters A,B,C,... to numbers 1,2,3... if it receives None it returns None.&quot;&quot;&quot;</span>
 </span><span id="intornone-10"><a href="#intornone-10"><span class="linenos">10</span></a>    <span class="c1">#  print(f&quot;intornone: {s}&quot;)</span>
-</span><span id="intornone-11"><a href="#intornone-11"><span class="linenos">11</span></a>    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="intornone-11"><a href="#intornone-11"><span class="linenos">11</span></a>    <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="intornone-12"><a href="#intornone-12"><span class="linenos">12</span></a>        <span class="k">return</span> <span class="kc">None</span>
 </span><span id="intornone-13"><a href="#intornone-13"><span class="linenos">13</span></a>    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[A-Za-z]$&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
 </span><span id="intornone-14"><a href="#intornone-14"><span class="linenos">14</span></a>        <span class="c1">#print(&quot;match letter&quot;)</span>
@@ -182,7 +202,7 @@
     <a class="headerlink" href="#datestring"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="datestring-24"><a href="#datestring-24"><span class="linenos">24</span></a><span class="k">def</span><span class="w"> </span><span class="nf">datestring</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="datestring-25"><a href="#datestring-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;datestring returns fhir-compatible date string of date.&quot;&quot;&quot;</span>    
-</span><span id="datestring-26"><a href="#datestring-26"><span class="linenos">26</span></a>    <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span> 
+</span><span id="datestring-26"><a href="#datestring-26"><span class="linenos">26</span></a>    <span class="k">if</span> <span class="n">d</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
 </span><span id="datestring-27"><a href="#datestring-27"><span class="linenos">27</span></a>        <span class="k">return</span> <span class="kc">None</span>
 </span><span id="datestring-28"><a href="#datestring-28"><span class="linenos">28</span></a>    <span class="c1"># make the date time-zone aware (for utc +00:00 timezone)</span>
 </span><span id="datestring-29"><a href="#datestring-29"><span class="linenos">29</span></a>    <span class="c1"># d = d.replace(tzinfo=timezone.utc)</span>
@@ -232,22 +252,67 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fromisoornone</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">s</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">):</span></span>
+        <span class="name">fromisoornone</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">date_str</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="fromisoornone-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#fromisoornone"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="fromisoornone-47"><a href="#fromisoornone-47"><span class="linenos">47</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fromisoornone</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-</span><span id="fromisoornone-48"><a href="#fromisoornone-48"><span class="linenos">48</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;fromisoornone returns a date from iso string or none if string is empty&quot;&quot;&quot;</span>
-</span><span id="fromisoornone-49"><a href="#fromisoornone-49"><span class="linenos">49</span></a>
-</span><span id="fromisoornone-50"><a href="#fromisoornone-50"><span class="linenos">50</span></a>    <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-</span><span id="fromisoornone-51"><a href="#fromisoornone-51"><span class="linenos">51</span></a>        <span class="k">return</span> <span class="kc">None</span>
-</span><span id="fromisoornone-52"><a href="#fromisoornone-52"><span class="linenos">52</span></a>    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="fromisoornone-47"><a href="#fromisoornone-47"><span class="linenos">47</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fromisoornone</span><span class="p">(</span><span class="n">date_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fromisoornone-48"><a href="#fromisoornone-48"><span class="linenos">48</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;fromisoornone parses a ISO-8601 string or returns None if string is nullish.</span>
+</span><span id="fromisoornone-49"><a href="#fromisoornone-49"><span class="linenos">49</span></a><span class="sd">    Args:</span>
+</span><span id="fromisoornone-50"><a href="#fromisoornone-50"><span class="linenos">50</span></a><span class="sd">        date_str (str): The ISO-8601 date string.</span>
+</span><span id="fromisoornone-51"><a href="#fromisoornone-51"><span class="linenos">51</span></a><span class="sd">    Returns:</span>
+</span><span id="fromisoornone-52"><a href="#fromisoornone-52"><span class="linenos">52</span></a><span class="sd">        datetime or None: The parsed datetime object or None if input is nullish.   &quot;&quot;&quot;</span>
+</span><span id="fromisoornone-53"><a href="#fromisoornone-53"><span class="linenos">53</span></a>    <span class="k">if</span> <span class="n">is_nullish</span><span class="p">(</span><span class="n">date_str</span><span class="p">):</span>
+</span><span id="fromisoornone-54"><a href="#fromisoornone-54"><span class="linenos">54</span></a>        <span class="k">return</span> <span class="kc">None</span>
+</span><span id="fromisoornone-55"><a href="#fromisoornone-55"><span class="linenos">55</span></a>
+</span><span id="fromisoornone-56"><a href="#fromisoornone-56"><span class="linenos">56</span></a>    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">date_str</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>fromisoornone returns a date from iso string or none if string is empty</p>
+            <div class="docstring"><p>fromisoornone parses a ISO-8601 string or returns None if string is nullish.
+Args:
+    date_str (str): The ISO-8601 date string.
+Returns:
+    datetime or None: The parsed datetime object or None if input is nullish.</p>
+</div>
+
+
+                </section>
+                <section id="is_nullish">
+                            <input id="is_nullish-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">is_nullish</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+
+                <label class="view-source-button" for="is_nullish-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#is_nullish"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="is_nullish-58"><a href="#is_nullish-58"><span class="linenos">58</span></a><span class="k">def</span><span class="w"> </span><span class="nf">is_nullish</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span id="is_nullish-59"><a href="#is_nullish-59"><span class="linenos">59</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks if the given string is None, empty or only contains whitespace </span>
+</span><span id="is_nullish-60"><a href="#is_nullish-60"><span class="linenos">60</span></a><span class="sd">        or is the string &#39;null&#39; (case insensitive).</span>
+</span><span id="is_nullish-61"><a href="#is_nullish-61"><span class="linenos">61</span></a><span class="sd">    Args:</span>
+</span><span id="is_nullish-62"><a href="#is_nullish-62"><span class="linenos">62</span></a><span class="sd">        value (str): The string to check.</span>
+</span><span id="is_nullish-63"><a href="#is_nullish-63"><span class="linenos">63</span></a><span class="sd">    Returns:</span>
+</span><span id="is_nullish-64"><a href="#is_nullish-64"><span class="linenos">64</span></a><span class="sd">        bool: True if the string is nullish, False otherwise.</span>
+</span><span id="is_nullish-65"><a href="#is_nullish-65"><span class="linenos">65</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="is_nullish-66"><a href="#is_nullish-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="is_nullish-67"><a href="#is_nullish-67"><span class="linenos">67</span></a>        <span class="k">return</span> <span class="kc">True</span>
+</span><span id="is_nullish-68"><a href="#is_nullish-68"><span class="linenos">68</span></a>    <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;null&quot;</span><span class="p">:</span>
+</span><span id="is_nullish-69"><a href="#is_nullish-69"><span class="linenos">69</span></a>        <span class="k">return</span> <span class="kc">True</span>
+</span><span id="is_nullish-70"><a href="#is_nullish-70"><span class="linenos">70</span></a>    <span class="k">return</span> <span class="kc">False</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Checks if the given string is None, empty or only contains whitespace 
+    or is the string 'null' (case insensitive).
+Args:
+    value (str): The string to check.
+Returns:
+    bool: True if the string is nullish, False otherwise.</p>
 </div>
 
 
@@ -263,19 +328,19 @@
 
     </div>
     <a class="headerlink" href="#open_csv_file"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="open_csv_file-55"><a href="#open_csv_file-55"><span class="linenos">55</span></a><span class="k">def</span><span class="w"> </span><span class="nf">open_csv_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
-</span><span id="open_csv_file-56"><a href="#open_csv_file-56"><span class="linenos">56</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="open_csv_file-57"><a href="#open_csv_file-57"><span class="linenos">57</span></a><span class="sd">    open_csv_file opens a CSV file and returns a DictReader object.</span>
-</span><span id="open_csv_file-58"><a href="#open_csv_file-58"><span class="linenos">58</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="open_csv_file-59"><a href="#open_csv_file-59"><span class="linenos">59</span></a>    <span class="k">try</span><span class="p">:</span>
-</span><span id="open_csv_file-60"><a href="#open_csv_file-60"><span class="linenos">60</span></a>        <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
-</span><span id="open_csv_file-61"><a href="#open_csv_file-61"><span class="linenos">61</span></a>        <span class="k">return</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">)</span>
-</span><span id="open_csv_file-62"><a href="#open_csv_file-62"><span class="linenos">62</span></a>    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-</span><span id="open_csv_file-63"><a href="#open_csv_file-63"><span class="linenos">63</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> not found.&quot;</span><span class="p">)</span>
-</span><span id="open_csv_file-64"><a href="#open_csv_file-64"><span class="linenos">64</span></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span id="open_csv_file-65"><a href="#open_csv_file-65"><span class="linenos">65</span></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="open_csv_file-66"><a href="#open_csv_file-66"><span class="linenos">66</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error opening file </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="open_csv_file-67"><a href="#open_csv_file-67"><span class="linenos">67</span></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="open_csv_file-72"><a href="#open_csv_file-72"><span class="linenos">72</span></a><span class="k">def</span><span class="w"> </span><span class="nf">open_csv_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+</span><span id="open_csv_file-73"><a href="#open_csv_file-73"><span class="linenos">73</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="open_csv_file-74"><a href="#open_csv_file-74"><span class="linenos">74</span></a><span class="sd">    open_csv_file opens a CSV file and returns a DictReader object.</span>
+</span><span id="open_csv_file-75"><a href="#open_csv_file-75"><span class="linenos">75</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="open_csv_file-76"><a href="#open_csv_file-76"><span class="linenos">76</span></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="open_csv_file-77"><a href="#open_csv_file-77"><span class="linenos">77</span></a>        <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+</span><span id="open_csv_file-78"><a href="#open_csv_file-78"><span class="linenos">78</span></a>        <span class="k">return</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">)</span>
+</span><span id="open_csv_file-79"><a href="#open_csv_file-79"><span class="linenos">79</span></a>    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+</span><span id="open_csv_file-80"><a href="#open_csv_file-80"><span class="linenos">80</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> not found.&quot;</span><span class="p">)</span>
+</span><span id="open_csv_file-81"><a href="#open_csv_file-81"><span class="linenos">81</span></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="open_csv_file-82"><a href="#open_csv_file-82"><span class="linenos">82</span></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="open_csv_file-83"><a href="#open_csv_file-83"><span class="linenos">83</span></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error opening file </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="open_csv_file-84"><a href="#open_csv_file-84"><span class="linenos">84</span></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></pre></div>
 
 
