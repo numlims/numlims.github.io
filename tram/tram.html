@@ -204,7 +204,7 @@
                                 <a class="variable" href="#Finding.findingdate">findingdate</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Finding.methodname">methodname</a>
+                                <a class="variable" href="#Finding.name">name</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Finding.patient">patient</a>
@@ -584,7 +584,7 @@ tram    </h1>
 </span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Finding</span><span class="p">:</span>
 </span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">method</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span>
 </span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">findingdate</span><span class="p">:</span><span class="n">datetime</span><span class="o">=</span><span class="kc">None</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">methodname</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span>
 </span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">patient</span><span class="p">:</span><span class="n">Idable</span><span class="o">=</span><span class="kc">None</span>
 </span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">recs</span><span class="p">:</span><span class="nb">map</span><span class="o">=</span><span class="p">{}</span> <span class="c1"># of Rec, by code</span>
 </span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">sample</span><span class="p">:</span><span class="n">Idable</span>
@@ -593,7 +593,7 @@ tram    </h1>
 </span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>        <span class="bp">self</span><span class="p">,</span>
 </span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>        <span class="n">findingdate</span><span class="p">:</span><span class="n">datetime</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="n">method</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">methodname</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">patient</span><span class="p">:</span><span class="n">Idable</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>        
 </span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="n">recs</span><span class="p">:</span><span class="nb">map</span><span class="o">=</span><span class="p">{},</span> <span class="c1"># of Rec, by code</span>
 </span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>        <span class="n">sample</span><span class="p">:</span><span class="n">Idable</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -601,7 +601,7 @@ tram    </h1>
 </span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="p">):</span>
 </span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">findingdate</span> <span class="o">=</span> <span class="n">findingdate</span>
 </span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">methodname</span> <span class="o">=</span> <span class="n">methodname</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 </span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">patient</span> <span class="o">=</span> <span class="n">patient</span>
 </span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">recs</span> <span class="o">=</span> <span class="n">recs</span>
 </span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">sample</span> <span class="o">=</span> <span class="n">sample</span>
@@ -1810,7 +1810,7 @@ main idc is passed.</p>
             <div class="pdoc-code codehilite"><pre><span></span><span id="Finding-221"><a href="#Finding-221"><span class="linenos">221</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Finding</span><span class="p">:</span>
 </span><span id="Finding-222"><a href="#Finding-222"><span class="linenos">222</span></a>    <span class="n">method</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span>
 </span><span id="Finding-223"><a href="#Finding-223"><span class="linenos">223</span></a>    <span class="n">findingdate</span><span class="p">:</span><span class="n">datetime</span><span class="o">=</span><span class="kc">None</span>
-</span><span id="Finding-224"><a href="#Finding-224"><span class="linenos">224</span></a>    <span class="n">methodname</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span>
+</span><span id="Finding-224"><a href="#Finding-224"><span class="linenos">224</span></a>    <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span>
 </span><span id="Finding-225"><a href="#Finding-225"><span class="linenos">225</span></a>    <span class="n">patient</span><span class="p">:</span><span class="n">Idable</span><span class="o">=</span><span class="kc">None</span>
 </span><span id="Finding-226"><a href="#Finding-226"><span class="linenos">226</span></a>    <span class="n">recs</span><span class="p">:</span><span class="nb">map</span><span class="o">=</span><span class="p">{}</span> <span class="c1"># of Rec, by code</span>
 </span><span id="Finding-227"><a href="#Finding-227"><span class="linenos">227</span></a>    <span class="n">sample</span><span class="p">:</span><span class="n">Idable</span>
@@ -1819,7 +1819,7 @@ main idc is passed.</p>
 </span><span id="Finding-230"><a href="#Finding-230"><span class="linenos">230</span></a>        <span class="bp">self</span><span class="p">,</span>
 </span><span id="Finding-231"><a href="#Finding-231"><span class="linenos">231</span></a>        <span class="n">findingdate</span><span class="p">:</span><span class="n">datetime</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="Finding-232"><a href="#Finding-232"><span class="linenos">232</span></a>        <span class="n">method</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="Finding-233"><a href="#Finding-233"><span class="linenos">233</span></a>        <span class="n">methodname</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="Finding-233"><a href="#Finding-233"><span class="linenos">233</span></a>        <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="Finding-234"><a href="#Finding-234"><span class="linenos">234</span></a>        <span class="n">patient</span><span class="p">:</span><span class="n">Idable</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>        
 </span><span id="Finding-235"><a href="#Finding-235"><span class="linenos">235</span></a>        <span class="n">recs</span><span class="p">:</span><span class="nb">map</span><span class="o">=</span><span class="p">{},</span> <span class="c1"># of Rec, by code</span>
 </span><span id="Finding-236"><a href="#Finding-236"><span class="linenos">236</span></a>        <span class="n">sample</span><span class="p">:</span><span class="n">Idable</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1827,7 +1827,7 @@ main idc is passed.</p>
 </span><span id="Finding-238"><a href="#Finding-238"><span class="linenos">238</span></a>    <span class="p">):</span>
 </span><span id="Finding-239"><a href="#Finding-239"><span class="linenos">239</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">findingdate</span> <span class="o">=</span> <span class="n">findingdate</span>
 </span><span id="Finding-240"><a href="#Finding-240"><span class="linenos">240</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
-</span><span id="Finding-241"><a href="#Finding-241"><span class="linenos">241</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">methodname</span> <span class="o">=</span> <span class="n">methodname</span>
+</span><span id="Finding-241"><a href="#Finding-241"><span class="linenos">241</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 </span><span id="Finding-242"><a href="#Finding-242"><span class="linenos">242</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">patient</span> <span class="o">=</span> <span class="n">patient</span>
 </span><span id="Finding-243"><a href="#Finding-243"><span class="linenos">243</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">recs</span> <span class="o">=</span> <span class="n">recs</span>
 </span><span id="Finding-244"><a href="#Finding-244"><span class="linenos">244</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">sample</span> <span class="o">=</span> <span class="n">sample</span>
@@ -1841,7 +1841,7 @@ main idc is passed.</p>
                                         <input id="Finding.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
-        <span class="name">Finding</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">findingdate</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">methodname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">patient</span><span class="p">:</span> <span class="n"><a href="#Idable">Idable</a></span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">recs</span><span class="p">:</span> <span class="nb">map</span> <span class="o">=</span> <span class="p">{}</span>,</span><span class="param">	<span class="n">sample</span><span class="p">:</span> <span class="n"><a href="#Idable">Idable</a></span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sender</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
+        <span class="name">Finding</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">findingdate</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">patient</span><span class="p">:</span> <span class="n"><a href="#Idable">Idable</a></span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">recs</span><span class="p">:</span> <span class="nb">map</span> <span class="o">=</span> <span class="p">{}</span>,</span><span class="param">	<span class="n">sample</span><span class="p">:</span> <span class="n"><a href="#Idable">Idable</a></span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sender</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
 
                 <label class="view-source-button" for="Finding.__init__-view-source"><span>View Source</span></label>
 
@@ -1851,7 +1851,7 @@ main idc is passed.</p>
 </span><span id="Finding.__init__-230"><a href="#Finding.__init__-230"><span class="linenos">230</span></a>        <span class="bp">self</span><span class="p">,</span>
 </span><span id="Finding.__init__-231"><a href="#Finding.__init__-231"><span class="linenos">231</span></a>        <span class="n">findingdate</span><span class="p">:</span><span class="n">datetime</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="Finding.__init__-232"><a href="#Finding.__init__-232"><span class="linenos">232</span></a>        <span class="n">method</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="Finding.__init__-233"><a href="#Finding.__init__-233"><span class="linenos">233</span></a>        <span class="n">methodname</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="Finding.__init__-233"><a href="#Finding.__init__-233"><span class="linenos">233</span></a>        <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="Finding.__init__-234"><a href="#Finding.__init__-234"><span class="linenos">234</span></a>        <span class="n">patient</span><span class="p">:</span><span class="n">Idable</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>        
 </span><span id="Finding.__init__-235"><a href="#Finding.__init__-235"><span class="linenos">235</span></a>        <span class="n">recs</span><span class="p">:</span><span class="nb">map</span><span class="o">=</span><span class="p">{},</span> <span class="c1"># of Rec, by code</span>
 </span><span id="Finding.__init__-236"><a href="#Finding.__init__-236"><span class="linenos">236</span></a>        <span class="n">sample</span><span class="p">:</span><span class="n">Idable</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1859,7 +1859,7 @@ main idc is passed.</p>
 </span><span id="Finding.__init__-238"><a href="#Finding.__init__-238"><span class="linenos">238</span></a>    <span class="p">):</span>
 </span><span id="Finding.__init__-239"><a href="#Finding.__init__-239"><span class="linenos">239</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">findingdate</span> <span class="o">=</span> <span class="n">findingdate</span>
 </span><span id="Finding.__init__-240"><a href="#Finding.__init__-240"><span class="linenos">240</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
-</span><span id="Finding.__init__-241"><a href="#Finding.__init__-241"><span class="linenos">241</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">methodname</span> <span class="o">=</span> <span class="n">methodname</span>
+</span><span id="Finding.__init__-241"><a href="#Finding.__init__-241"><span class="linenos">241</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 </span><span id="Finding.__init__-242"><a href="#Finding.__init__-242"><span class="linenos">242</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">patient</span> <span class="o">=</span> <span class="n">patient</span>
 </span><span id="Finding.__init__-243"><a href="#Finding.__init__-243"><span class="linenos">243</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">recs</span> <span class="o">=</span> <span class="n">recs</span>
 </span><span id="Finding.__init__-244"><a href="#Finding.__init__-244"><span class="linenos">244</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">sample</span> <span class="o">=</span> <span class="n">sample</span>
@@ -1894,14 +1894,14 @@ main idc is passed.</p>
     
 
                             </div>
-                            <div id="Finding.methodname" class="classattr">
+                            <div id="Finding.name" class="classattr">
                                 <div class="attr variable">
-            <span class="name">methodname</span><span class="annotation">: str</span>        =
+            <span class="name">name</span><span class="annotation">: str</span>        =
 <span class="default_value">None</span>
 
         
     </div>
-    <a class="headerlink" href="#Finding.methodname"></a>
+    <a class="headerlink" href="#Finding.name"></a>
     
     
 
