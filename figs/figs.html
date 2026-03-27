@@ -54,7 +54,22 @@
                                 <a class="function" href="#specimen.category">category</a>
                         </li>
                         <li>
+                                <a class="function" href="#specimen.centrifugation_date">centrifugation_date</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#specimen.collected_date">collected_date</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#specimen.container">container</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#specimen.derival_date">derival_date</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#specimen.initialamount">initialamount</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#specimen.initialamountunit">initialamountunit</a>
                         </li>
                         <li>
                                 <a class="function" href="#specimen.locationpath">locationpath</a>
@@ -72,7 +87,16 @@
                                 <a class="function" href="#specimen.patientid">patientid</a>
                         </li>
                         <li>
+                                <a class="function" href="#specimen.received_date">received_date</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#specimen.reposition_date">reposition_date</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#specimen.restamount">restamount</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#specimen.restamountunit">restamountunit</a>
                         </li>
                         <li>
                                 <a class="function" href="#specimen.sampleid">sampleid</a>
@@ -135,11 +159,11 @@ figs    </h1>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a>            <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">url</span><span class="p">:</span>
 </span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a>                <span class="k">return</span> <span class="n">ext</span>
 </span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">full_url</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">full_url</span><span class="p">(</span><span class="n">entry</span><span class="p">):</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="sd">         full_url return the full url of a fhir resource.</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="sd">         full_url return the full url of a fhir entry.</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;fullUrl&quot;</span><span class="p">)</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;fullUrl&quot;</span><span class="p">)</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="nd">@staticmethod</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -190,98 +214,147 @@ figs    </h1>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sampleCategory&quot;</span><span class="p">)</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s2">&quot;valueCoding/code&quot;</span><span class="p">)</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">container</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">centrifugation_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
 </span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">         container returns the container.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">         centrifugation_date returns the centrifugation date.</span>
 </span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/identifier/0/value&quot;</span><span class="p">)</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">locationpath</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">         locationpath gets the sampleLocation. (was lagerort).</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="n">exta</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/sampleLocation&quot;</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="n">extb</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">exta</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/sampleLocationPath&quot;</span><span class="p">)</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">extb</span><span class="p">,</span> <span class="s2">&quot;valueString&quot;</span><span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="n">centriext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/preCentrifugationDelayDate&quot;</span><span class="p">)</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">centriext</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">collected_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">         collected_date returns the collection date.</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;collection/collectedDateTime&quot;</span><span class="p">)</span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">container</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">         orga returns the organisation or None if no organisation.</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">         container returns the container.</span>
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/organizationUnit&quot;</span><span class="p">)</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s2">&quot;valueReference/identifier/value&quot;</span><span class="p">)</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parent_fhirid</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">         parent_fhirid gets the fhirid of the parent from resource.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;parent&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="k">return</span> <span class="kc">None</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;parent/0/reference&quot;</span><span class="p">)</span> <span class="c1"># there should only be one parent, so one element in the array</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parent_sampleid</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">         parent_sampleid gets the sample id of the parent.</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="k">if</span> <span class="s2">&quot;parent&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;parent&quot;</span><span class="p">):</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>                <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;identifier&quot;</span> <span class="ow">in</span> <span class="n">parent</span><span class="p">:</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>                    <span class="k">continue</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>                <span class="k">for</span> <span class="n">coding</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;identifier/type/coding&quot;</span><span class="p">):</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>                    <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;SAMPLEID&quot;</span><span class="p">:</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>                        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;identifier/value&quot;</span><span class="p">)</span> <span class="c1"># pid: parent id</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="k">return</span> <span class="kc">None</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="k">for</span> <span class="n">coding</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject/identifier/type/coding&quot;</span><span class="p">):</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>            <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">code</span><span class="p">:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>                <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject/identifier/value&quot;</span><span class="p">)</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">restamount</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">         restamount returns the restmenge of the sample. (was restmenge)</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="c1"># pres = DictPath(resource)</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="c1">#if not &quot;value&quot; in resource[&quot;container&quot;][0][&quot;specimenQuantity&quot;]:</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="c1">#    return None</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="c1">#return resource[&quot;container&quot;][0][&quot;specimenQuantity&quot;][&quot;value&quot;]</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/specimenQuantity/value&quot;</span><span class="p">)</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sampleid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;SAMPLEID&quot;</span><span class="p">):</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">         sampleid returns the sample id of a resource.</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sprec</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;valueCoding&quot;</span><span class="p">):</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">         sprec gets sprec of given name with key, default &quot;valueCoding&quot;.</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/&quot;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="c1">#`stockprocessing``</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">         type returns the material type of the resource. (was material).</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;type/coding/0/code&quot;</span><span class="p">)</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="k">class</span><span class="w"> </span><span class="nc">patient</span><span class="p">(</span><span class="n">figs</span><span class="p">):</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">         patientid returns the patientid by code.</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">         orga returns the organization unit for a patient resource.</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;generalPractitioner/0/identifier/value&quot;</span><span class="p">)</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/identifier/0/value&quot;</span><span class="p">)</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">derival_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">         derival_date returns the derival date.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">e</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/derivalDate&quot;</span><span class="p">)</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">initialamount</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">         initialamount returns the initial amount of the sample.</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;collection/quantity/value&quot;</span><span class="p">)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">initialamountunit</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">         initialamountunit returns the unit of the sample&#39;s initial amount.</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;collection/quantity/unit&quot;</span><span class="p">)</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">locationpath</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">         locationpath gets the sampleLocation. (was lagerort).</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">exta</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/sampleLocation&quot;</span><span class="p">)</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">extb</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">exta</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/sampleLocationPath&quot;</span><span class="p">)</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">extb</span><span class="p">,</span> <span class="s2">&quot;valueString&quot;</span><span class="p">)</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">         orga returns the organisation or None if no organisation.</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/organizationUnit&quot;</span><span class="p">)</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s2">&quot;valueReference/identifier/value&quot;</span><span class="p">)</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parent_fhirid</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">         parent_fhirid gets the fhirid of the parent from resource.</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;parent&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="k">return</span> <span class="kc">None</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;parent/0/reference&quot;</span><span class="p">)</span> <span class="c1"># there should only be one parent, so one element in the array</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parent_sampleid</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">         parent_sampleid gets the sample id of the parent.</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="k">if</span> <span class="s2">&quot;parent&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>            <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;parent&quot;</span><span class="p">):</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>                <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;identifier&quot;</span> <span class="ow">in</span> <span class="n">parent</span><span class="p">:</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>                    <span class="k">continue</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>                <span class="k">for</span> <span class="n">coding</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;identifier/type/coding&quot;</span><span class="p">):</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>                    <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;SAMPLEID&quot;</span><span class="p">:</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>                        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;identifier/value&quot;</span><span class="p">)</span> <span class="c1"># pid: parent id</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="k">return</span> <span class="kc">None</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">         patientid gets the patient id of the subject.</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="k">for</span> <span class="n">coding</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject/identifier/type/coding&quot;</span><span class="p">):</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>            <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">code</span><span class="p">:</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>                <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject/identifier/value&quot;</span><span class="p">)</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">received_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">         received_date returns the received date.</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;receivedTime&quot;</span><span class="p">)</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">reposition_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">         reposition_date returns the reposition date.</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">e</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/repositionDate&quot;</span><span class="p">)</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>        
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">restamount</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">         restamount returns the restmenge of the sample.</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/specimenQuantity/value&quot;</span><span class="p">)</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">restamountunit</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">         restamountunit returns unit of the sample&#39;s restamount.</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/specimenQuantity/unit&quot;</span><span class="p">)</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sampleid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;SAMPLEID&quot;</span><span class="p">):</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">         sampleid returns the sample id of a resource.</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sprec</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;valueCoding&quot;</span><span class="p">):</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">         sprec gets sprec of given name with key, default &quot;valueCoding&quot;.</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/&quot;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="c1">#`stockprocessing``</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">         type returns the material type of the resource. (was material).</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;type/coding/0/code&quot;</span><span class="p">)</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="k">class</span><span class="w"> </span><span class="nc">patient</span><span class="p">(</span><span class="n">figs</span><span class="p">):</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">         patientid returns the patientid by code.</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">         orga returns the organization unit for a patient resource.</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;generalPractitioner/0/identifier/value&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -310,11 +383,11 @@ figs    </h1>
 </span><span id="figs-15"><a href="#figs-15"><span class="linenos">15</span></a>            <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">url</span><span class="p">:</span>
 </span><span id="figs-16"><a href="#figs-16"><span class="linenos">16</span></a>                <span class="k">return</span> <span class="n">ext</span>
 </span><span id="figs-17"><a href="#figs-17"><span class="linenos">17</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="figs-18"><a href="#figs-18"><span class="linenos">18</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">full_url</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="figs-18"><a href="#figs-18"><span class="linenos">18</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">full_url</span><span class="p">(</span><span class="n">entry</span><span class="p">):</span>
 </span><span id="figs-19"><a href="#figs-19"><span class="linenos">19</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="figs-20"><a href="#figs-20"><span class="linenos">20</span></a><span class="sd">         full_url return the full url of a fhir resource.</span>
+</span><span id="figs-20"><a href="#figs-20"><span class="linenos">20</span></a><span class="sd">         full_url return the full url of a fhir entry.</span>
 </span><span id="figs-21"><a href="#figs-21"><span class="linenos">21</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="figs-22"><a href="#figs-22"><span class="linenos">22</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;fullUrl&quot;</span><span class="p">)</span>
+</span><span id="figs-22"><a href="#figs-22"><span class="linenos">22</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;fullUrl&quot;</span><span class="p">)</span>
 </span><span id="figs-23"><a href="#figs-23"><span class="linenos">23</span></a>    <span class="nd">@staticmethod</span>
 </span><span id="figs-24"><a href="#figs-24"><span class="linenos">24</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
 </span><span id="figs-25"><a href="#figs-25"><span class="linenos">25</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -397,22 +470,22 @@ figs    </h1>
                     <div class="decorator decorator-staticmethod">@staticmethod</div>
 
         <span class="def">def</span>
-        <span class="name">full_url</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+        <span class="name">full_url</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">entry</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="figs.full_url-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#figs.full_url"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="figs.full_url-17"><a href="#figs.full_url-17"><span class="linenos">17</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="figs.full_url-18"><a href="#figs.full_url-18"><span class="linenos">18</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">full_url</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="figs.full_url-18"><a href="#figs.full_url-18"><span class="linenos">18</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">full_url</span><span class="p">(</span><span class="n">entry</span><span class="p">):</span>
 </span><span id="figs.full_url-19"><a href="#figs.full_url-19"><span class="linenos">19</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="figs.full_url-20"><a href="#figs.full_url-20"><span class="linenos">20</span></a><span class="sd">         full_url return the full url of a fhir resource.</span>
+</span><span id="figs.full_url-20"><a href="#figs.full_url-20"><span class="linenos">20</span></a><span class="sd">         full_url return the full url of a fhir entry.</span>
 </span><span id="figs.full_url-21"><a href="#figs.full_url-21"><span class="linenos">21</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="figs.full_url-22"><a href="#figs.full_url-22"><span class="linenos">22</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;fullUrl&quot;</span><span class="p">)</span>
+</span><span id="figs.full_url-22"><a href="#figs.full_url-22"><span class="linenos">22</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;fullUrl&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>full_url return the full url of a fhir resource.</p>
+            <div class="docstring"><p>full_url return the full url of a fhir entry.</p>
 </div>
 
 
@@ -562,85 +635,134 @@ identifier codes, eg: { "SAMPLEID": "abc", "EXTSAMPLEID": "cde" }</p>
 </span><span id="specimen-70"><a href="#specimen-70"><span class="linenos"> 70</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sampleCategory&quot;</span><span class="p">)</span>
 </span><span id="specimen-71"><a href="#specimen-71"><span class="linenos"> 71</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s2">&quot;valueCoding/code&quot;</span><span class="p">)</span>
 </span><span id="specimen-72"><a href="#specimen-72"><span class="linenos"> 72</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen-73"><a href="#specimen-73"><span class="linenos"> 73</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">container</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-73"><a href="#specimen-73"><span class="linenos"> 73</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">centrifugation_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
 </span><span id="specimen-74"><a href="#specimen-74"><span class="linenos"> 74</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen-75"><a href="#specimen-75"><span class="linenos"> 75</span></a><span class="sd">         container returns the container.</span>
+</span><span id="specimen-75"><a href="#specimen-75"><span class="linenos"> 75</span></a><span class="sd">         centrifugation_date returns the centrifugation date.</span>
 </span><span id="specimen-76"><a href="#specimen-76"><span class="linenos"> 76</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen-77"><a href="#specimen-77"><span class="linenos"> 77</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/identifier/0/value&quot;</span><span class="p">)</span>
-</span><span id="specimen-78"><a href="#specimen-78"><span class="linenos"> 78</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen-79"><a href="#specimen-79"><span class="linenos"> 79</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">locationpath</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen-80"><a href="#specimen-80"><span class="linenos"> 80</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen-81"><a href="#specimen-81"><span class="linenos"> 81</span></a><span class="sd">         locationpath gets the sampleLocation. (was lagerort).</span>
-</span><span id="specimen-82"><a href="#specimen-82"><span class="linenos"> 82</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen-83"><a href="#specimen-83"><span class="linenos"> 83</span></a>        <span class="n">exta</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/sampleLocation&quot;</span><span class="p">)</span>
-</span><span id="specimen-84"><a href="#specimen-84"><span class="linenos"> 84</span></a>        <span class="n">extb</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">exta</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/sampleLocationPath&quot;</span><span class="p">)</span>
-</span><span id="specimen-85"><a href="#specimen-85"><span class="linenos"> 85</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">extb</span><span class="p">,</span> <span class="s2">&quot;valueString&quot;</span><span class="p">)</span>
+</span><span id="specimen-77"><a href="#specimen-77"><span class="linenos"> 77</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
+</span><span id="specimen-78"><a href="#specimen-78"><span class="linenos"> 78</span></a>        <span class="n">centriext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/preCentrifugationDelayDate&quot;</span><span class="p">)</span>
+</span><span id="specimen-79"><a href="#specimen-79"><span class="linenos"> 79</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">centriext</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>
+</span><span id="specimen-80"><a href="#specimen-80"><span class="linenos"> 80</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-81"><a href="#specimen-81"><span class="linenos"> 81</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">collected_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-82"><a href="#specimen-82"><span class="linenos"> 82</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-83"><a href="#specimen-83"><span class="linenos"> 83</span></a><span class="sd">         collected_date returns the collection date.</span>
+</span><span id="specimen-84"><a href="#specimen-84"><span class="linenos"> 84</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-85"><a href="#specimen-85"><span class="linenos"> 85</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;collection/collectedDateTime&quot;</span><span class="p">)</span>
 </span><span id="specimen-86"><a href="#specimen-86"><span class="linenos"> 86</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen-87"><a href="#specimen-87"><span class="linenos"> 87</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-87"><a href="#specimen-87"><span class="linenos"> 87</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">container</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
 </span><span id="specimen-88"><a href="#specimen-88"><span class="linenos"> 88</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen-89"><a href="#specimen-89"><span class="linenos"> 89</span></a><span class="sd">         orga returns the organisation or None if no organisation.</span>
+</span><span id="specimen-89"><a href="#specimen-89"><span class="linenos"> 89</span></a><span class="sd">         container returns the container.</span>
 </span><span id="specimen-90"><a href="#specimen-90"><span class="linenos"> 90</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen-91"><a href="#specimen-91"><span class="linenos"> 91</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/organizationUnit&quot;</span><span class="p">)</span>
-</span><span id="specimen-92"><a href="#specimen-92"><span class="linenos"> 92</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s2">&quot;valueReference/identifier/value&quot;</span><span class="p">)</span>
-</span><span id="specimen-93"><a href="#specimen-93"><span class="linenos"> 93</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen-94"><a href="#specimen-94"><span class="linenos"> 94</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parent_fhirid</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen-95"><a href="#specimen-95"><span class="linenos"> 95</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen-96"><a href="#specimen-96"><span class="linenos"> 96</span></a><span class="sd">         parent_fhirid gets the fhirid of the parent from resource.</span>
-</span><span id="specimen-97"><a href="#specimen-97"><span class="linenos"> 97</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen-98"><a href="#specimen-98"><span class="linenos"> 98</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;parent&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
-</span><span id="specimen-99"><a href="#specimen-99"><span class="linenos"> 99</span></a>            <span class="k">return</span> <span class="kc">None</span>
-</span><span id="specimen-100"><a href="#specimen-100"><span class="linenos">100</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;parent/0/reference&quot;</span><span class="p">)</span> <span class="c1"># there should only be one parent, so one element in the array</span>
-</span><span id="specimen-101"><a href="#specimen-101"><span class="linenos">101</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen-102"><a href="#specimen-102"><span class="linenos">102</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parent_sampleid</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen-103"><a href="#specimen-103"><span class="linenos">103</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen-104"><a href="#specimen-104"><span class="linenos">104</span></a><span class="sd">         parent_sampleid gets the sample id of the parent.</span>
-</span><span id="specimen-105"><a href="#specimen-105"><span class="linenos">105</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen-106"><a href="#specimen-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="s2">&quot;parent&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
-</span><span id="specimen-107"><a href="#specimen-107"><span class="linenos">107</span></a>            <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;parent&quot;</span><span class="p">):</span>
-</span><span id="specimen-108"><a href="#specimen-108"><span class="linenos">108</span></a>                <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;identifier&quot;</span> <span class="ow">in</span> <span class="n">parent</span><span class="p">:</span>
-</span><span id="specimen-109"><a href="#specimen-109"><span class="linenos">109</span></a>                    <span class="k">continue</span>
-</span><span id="specimen-110"><a href="#specimen-110"><span class="linenos">110</span></a>                <span class="k">for</span> <span class="n">coding</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;identifier/type/coding&quot;</span><span class="p">):</span>
-</span><span id="specimen-111"><a href="#specimen-111"><span class="linenos">111</span></a>                    <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;SAMPLEID&quot;</span><span class="p">:</span>
-</span><span id="specimen-112"><a href="#specimen-112"><span class="linenos">112</span></a>                        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;identifier/value&quot;</span><span class="p">)</span> <span class="c1"># pid: parent id</span>
-</span><span id="specimen-113"><a href="#specimen-113"><span class="linenos">113</span></a>        <span class="k">return</span> <span class="kc">None</span>
-</span><span id="specimen-114"><a href="#specimen-114"><span class="linenos">114</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen-115"><a href="#specimen-115"><span class="linenos">115</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
-</span><span id="specimen-116"><a href="#specimen-116"><span class="linenos">116</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen-117"><a href="#specimen-117"><span class="linenos">117</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen-118"><a href="#specimen-118"><span class="linenos">118</span></a>        <span class="k">for</span> <span class="n">coding</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject/identifier/type/coding&quot;</span><span class="p">):</span>
-</span><span id="specimen-119"><a href="#specimen-119"><span class="linenos">119</span></a>            <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">code</span><span class="p">:</span>
-</span><span id="specimen-120"><a href="#specimen-120"><span class="linenos">120</span></a>                <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject/identifier/value&quot;</span><span class="p">)</span>
-</span><span id="specimen-121"><a href="#specimen-121"><span class="linenos">121</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen-122"><a href="#specimen-122"><span class="linenos">122</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">restamount</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen-123"><a href="#specimen-123"><span class="linenos">123</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen-124"><a href="#specimen-124"><span class="linenos">124</span></a><span class="sd">         restamount returns the restmenge of the sample. (was restmenge)</span>
-</span><span id="specimen-125"><a href="#specimen-125"><span class="linenos">125</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen-126"><a href="#specimen-126"><span class="linenos">126</span></a>        <span class="c1"># pres = DictPath(resource)</span>
-</span><span id="specimen-127"><a href="#specimen-127"><span class="linenos">127</span></a>        <span class="c1">#if not &quot;value&quot; in resource[&quot;container&quot;][0][&quot;specimenQuantity&quot;]:</span>
-</span><span id="specimen-128"><a href="#specimen-128"><span class="linenos">128</span></a>        <span class="c1">#    return None</span>
-</span><span id="specimen-129"><a href="#specimen-129"><span class="linenos">129</span></a>        <span class="c1">#return resource[&quot;container&quot;][0][&quot;specimenQuantity&quot;][&quot;value&quot;]</span>
-</span><span id="specimen-130"><a href="#specimen-130"><span class="linenos">130</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/specimenQuantity/value&quot;</span><span class="p">)</span>
-</span><span id="specimen-131"><a href="#specimen-131"><span class="linenos">131</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen-132"><a href="#specimen-132"><span class="linenos">132</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sampleid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;SAMPLEID&quot;</span><span class="p">):</span>
-</span><span id="specimen-133"><a href="#specimen-133"><span class="linenos">133</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen-134"><a href="#specimen-134"><span class="linenos">134</span></a><span class="sd">         sampleid returns the sample id of a resource.</span>
-</span><span id="specimen-135"><a href="#specimen-135"><span class="linenos">135</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen-136"><a href="#specimen-136"><span class="linenos">136</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
-</span><span id="specimen-137"><a href="#specimen-137"><span class="linenos">137</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen-138"><a href="#specimen-138"><span class="linenos">138</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sprec</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;valueCoding&quot;</span><span class="p">):</span>
-</span><span id="specimen-139"><a href="#specimen-139"><span class="linenos">139</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen-140"><a href="#specimen-140"><span class="linenos">140</span></a><span class="sd">         sprec gets sprec of given name with key, default &quot;valueCoding&quot;.</span>
-</span><span id="specimen-141"><a href="#specimen-141"><span class="linenos">141</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen-142"><a href="#specimen-142"><span class="linenos">142</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
-</span><span id="specimen-143"><a href="#specimen-143"><span class="linenos">143</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/&quot;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
-</span><span id="specimen-144"><a href="#specimen-144"><span class="linenos">144</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-</span><span id="specimen-145"><a href="#specimen-145"><span class="linenos">145</span></a>    <span class="c1">#`stockprocessing``</span>
-</span><span id="specimen-146"><a href="#specimen-146"><span class="linenos">146</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen-147"><a href="#specimen-147"><span class="linenos">147</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen-148"><a href="#specimen-148"><span class="linenos">148</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen-149"><a href="#specimen-149"><span class="linenos">149</span></a><span class="sd">         type returns the material type of the resource. (was material).</span>
-</span><span id="specimen-150"><a href="#specimen-150"><span class="linenos">150</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen-151"><a href="#specimen-151"><span class="linenos">151</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;type/coding/0/code&quot;</span><span class="p">)</span>
+</span><span id="specimen-91"><a href="#specimen-91"><span class="linenos"> 91</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/identifier/0/value&quot;</span><span class="p">)</span>
+</span><span id="specimen-92"><a href="#specimen-92"><span class="linenos"> 92</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-93"><a href="#specimen-93"><span class="linenos"> 93</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">derival_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-94"><a href="#specimen-94"><span class="linenos"> 94</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-95"><a href="#specimen-95"><span class="linenos"> 95</span></a><span class="sd">         derival_date returns the derival date.</span>
+</span><span id="specimen-96"><a href="#specimen-96"><span class="linenos"> 96</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-97"><a href="#specimen-97"><span class="linenos"> 97</span></a>        <span class="n">e</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/derivalDate&quot;</span><span class="p">)</span>
+</span><span id="specimen-98"><a href="#specimen-98"><span class="linenos"> 98</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>
+</span><span id="specimen-99"><a href="#specimen-99"><span class="linenos"> 99</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-100"><a href="#specimen-100"><span class="linenos">100</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">initialamount</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-101"><a href="#specimen-101"><span class="linenos">101</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-102"><a href="#specimen-102"><span class="linenos">102</span></a><span class="sd">         initialamount returns the initial amount of the sample.</span>
+</span><span id="specimen-103"><a href="#specimen-103"><span class="linenos">103</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-104"><a href="#specimen-104"><span class="linenos">104</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;collection/quantity/value&quot;</span><span class="p">)</span>
+</span><span id="specimen-105"><a href="#specimen-105"><span class="linenos">105</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-106"><a href="#specimen-106"><span class="linenos">106</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">initialamountunit</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-107"><a href="#specimen-107"><span class="linenos">107</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-108"><a href="#specimen-108"><span class="linenos">108</span></a><span class="sd">         initialamountunit returns the unit of the sample&#39;s initial amount.</span>
+</span><span id="specimen-109"><a href="#specimen-109"><span class="linenos">109</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-110"><a href="#specimen-110"><span class="linenos">110</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;collection/quantity/unit&quot;</span><span class="p">)</span>
+</span><span id="specimen-111"><a href="#specimen-111"><span class="linenos">111</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-112"><a href="#specimen-112"><span class="linenos">112</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">locationpath</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-113"><a href="#specimen-113"><span class="linenos">113</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-114"><a href="#specimen-114"><span class="linenos">114</span></a><span class="sd">         locationpath gets the sampleLocation. (was lagerort).</span>
+</span><span id="specimen-115"><a href="#specimen-115"><span class="linenos">115</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-116"><a href="#specimen-116"><span class="linenos">116</span></a>        <span class="n">exta</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/sampleLocation&quot;</span><span class="p">)</span>
+</span><span id="specimen-117"><a href="#specimen-117"><span class="linenos">117</span></a>        <span class="n">extb</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">exta</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/sampleLocationPath&quot;</span><span class="p">)</span>
+</span><span id="specimen-118"><a href="#specimen-118"><span class="linenos">118</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">extb</span><span class="p">,</span> <span class="s2">&quot;valueString&quot;</span><span class="p">)</span>
+</span><span id="specimen-119"><a href="#specimen-119"><span class="linenos">119</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-120"><a href="#specimen-120"><span class="linenos">120</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-121"><a href="#specimen-121"><span class="linenos">121</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-122"><a href="#specimen-122"><span class="linenos">122</span></a><span class="sd">         orga returns the organisation or None if no organisation.</span>
+</span><span id="specimen-123"><a href="#specimen-123"><span class="linenos">123</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-124"><a href="#specimen-124"><span class="linenos">124</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/organizationUnit&quot;</span><span class="p">)</span>
+</span><span id="specimen-125"><a href="#specimen-125"><span class="linenos">125</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s2">&quot;valueReference/identifier/value&quot;</span><span class="p">)</span>
+</span><span id="specimen-126"><a href="#specimen-126"><span class="linenos">126</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-127"><a href="#specimen-127"><span class="linenos">127</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parent_fhirid</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-128"><a href="#specimen-128"><span class="linenos">128</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-129"><a href="#specimen-129"><span class="linenos">129</span></a><span class="sd">         parent_fhirid gets the fhirid of the parent from resource.</span>
+</span><span id="specimen-130"><a href="#specimen-130"><span class="linenos">130</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-131"><a href="#specimen-131"><span class="linenos">131</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;parent&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
+</span><span id="specimen-132"><a href="#specimen-132"><span class="linenos">132</span></a>            <span class="k">return</span> <span class="kc">None</span>
+</span><span id="specimen-133"><a href="#specimen-133"><span class="linenos">133</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;parent/0/reference&quot;</span><span class="p">)</span> <span class="c1"># there should only be one parent, so one element in the array</span>
+</span><span id="specimen-134"><a href="#specimen-134"><span class="linenos">134</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-135"><a href="#specimen-135"><span class="linenos">135</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parent_sampleid</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-136"><a href="#specimen-136"><span class="linenos">136</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-137"><a href="#specimen-137"><span class="linenos">137</span></a><span class="sd">         parent_sampleid gets the sample id of the parent.</span>
+</span><span id="specimen-138"><a href="#specimen-138"><span class="linenos">138</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-139"><a href="#specimen-139"><span class="linenos">139</span></a>        <span class="k">if</span> <span class="s2">&quot;parent&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
+</span><span id="specimen-140"><a href="#specimen-140"><span class="linenos">140</span></a>            <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;parent&quot;</span><span class="p">):</span>
+</span><span id="specimen-141"><a href="#specimen-141"><span class="linenos">141</span></a>                <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;identifier&quot;</span> <span class="ow">in</span> <span class="n">parent</span><span class="p">:</span>
+</span><span id="specimen-142"><a href="#specimen-142"><span class="linenos">142</span></a>                    <span class="k">continue</span>
+</span><span id="specimen-143"><a href="#specimen-143"><span class="linenos">143</span></a>                <span class="k">for</span> <span class="n">coding</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;identifier/type/coding&quot;</span><span class="p">):</span>
+</span><span id="specimen-144"><a href="#specimen-144"><span class="linenos">144</span></a>                    <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;SAMPLEID&quot;</span><span class="p">:</span>
+</span><span id="specimen-145"><a href="#specimen-145"><span class="linenos">145</span></a>                        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;identifier/value&quot;</span><span class="p">)</span> <span class="c1"># pid: parent id</span>
+</span><span id="specimen-146"><a href="#specimen-146"><span class="linenos">146</span></a>        <span class="k">return</span> <span class="kc">None</span>
+</span><span id="specimen-147"><a href="#specimen-147"><span class="linenos">147</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-148"><a href="#specimen-148"><span class="linenos">148</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
+</span><span id="specimen-149"><a href="#specimen-149"><span class="linenos">149</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-150"><a href="#specimen-150"><span class="linenos">150</span></a><span class="sd">         patientid gets the patient id of the subject.</span>
+</span><span id="specimen-151"><a href="#specimen-151"><span class="linenos">151</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-152"><a href="#specimen-152"><span class="linenos">152</span></a>        <span class="k">for</span> <span class="n">coding</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject/identifier/type/coding&quot;</span><span class="p">):</span>
+</span><span id="specimen-153"><a href="#specimen-153"><span class="linenos">153</span></a>            <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">code</span><span class="p">:</span>
+</span><span id="specimen-154"><a href="#specimen-154"><span class="linenos">154</span></a>                <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject/identifier/value&quot;</span><span class="p">)</span>
+</span><span id="specimen-155"><a href="#specimen-155"><span class="linenos">155</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-156"><a href="#specimen-156"><span class="linenos">156</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">received_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-157"><a href="#specimen-157"><span class="linenos">157</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-158"><a href="#specimen-158"><span class="linenos">158</span></a><span class="sd">         received_date returns the received date.</span>
+</span><span id="specimen-159"><a href="#specimen-159"><span class="linenos">159</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-160"><a href="#specimen-160"><span class="linenos">160</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;receivedTime&quot;</span><span class="p">)</span>
+</span><span id="specimen-161"><a href="#specimen-161"><span class="linenos">161</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-162"><a href="#specimen-162"><span class="linenos">162</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">reposition_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-163"><a href="#specimen-163"><span class="linenos">163</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-164"><a href="#specimen-164"><span class="linenos">164</span></a><span class="sd">         reposition_date returns the reposition date.</span>
+</span><span id="specimen-165"><a href="#specimen-165"><span class="linenos">165</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-166"><a href="#specimen-166"><span class="linenos">166</span></a>        <span class="n">e</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/repositionDate&quot;</span><span class="p">)</span>
+</span><span id="specimen-167"><a href="#specimen-167"><span class="linenos">167</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>        
+</span><span id="specimen-168"><a href="#specimen-168"><span class="linenos">168</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-169"><a href="#specimen-169"><span class="linenos">169</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">restamount</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-170"><a href="#specimen-170"><span class="linenos">170</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-171"><a href="#specimen-171"><span class="linenos">171</span></a><span class="sd">         restamount returns the restmenge of the sample.</span>
+</span><span id="specimen-172"><a href="#specimen-172"><span class="linenos">172</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-173"><a href="#specimen-173"><span class="linenos">173</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/specimenQuantity/value&quot;</span><span class="p">)</span>
+</span><span id="specimen-174"><a href="#specimen-174"><span class="linenos">174</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-175"><a href="#specimen-175"><span class="linenos">175</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">restamountunit</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-176"><a href="#specimen-176"><span class="linenos">176</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-177"><a href="#specimen-177"><span class="linenos">177</span></a><span class="sd">         restamountunit returns unit of the sample&#39;s restamount.</span>
+</span><span id="specimen-178"><a href="#specimen-178"><span class="linenos">178</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-179"><a href="#specimen-179"><span class="linenos">179</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/specimenQuantity/unit&quot;</span><span class="p">)</span>
+</span><span id="specimen-180"><a href="#specimen-180"><span class="linenos">180</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-181"><a href="#specimen-181"><span class="linenos">181</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sampleid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;SAMPLEID&quot;</span><span class="p">):</span>
+</span><span id="specimen-182"><a href="#specimen-182"><span class="linenos">182</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-183"><a href="#specimen-183"><span class="linenos">183</span></a><span class="sd">         sampleid returns the sample id of a resource.</span>
+</span><span id="specimen-184"><a href="#specimen-184"><span class="linenos">184</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-185"><a href="#specimen-185"><span class="linenos">185</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
+</span><span id="specimen-186"><a href="#specimen-186"><span class="linenos">186</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-187"><a href="#specimen-187"><span class="linenos">187</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sprec</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;valueCoding&quot;</span><span class="p">):</span>
+</span><span id="specimen-188"><a href="#specimen-188"><span class="linenos">188</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-189"><a href="#specimen-189"><span class="linenos">189</span></a><span class="sd">         sprec gets sprec of given name with key, default &quot;valueCoding&quot;.</span>
+</span><span id="specimen-190"><a href="#specimen-190"><span class="linenos">190</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-191"><a href="#specimen-191"><span class="linenos">191</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
+</span><span id="specimen-192"><a href="#specimen-192"><span class="linenos">192</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/&quot;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
+</span><span id="specimen-193"><a href="#specimen-193"><span class="linenos">193</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+</span><span id="specimen-194"><a href="#specimen-194"><span class="linenos">194</span></a>    <span class="c1">#`stockprocessing``</span>
+</span><span id="specimen-195"><a href="#specimen-195"><span class="linenos">195</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-196"><a href="#specimen-196"><span class="linenos">196</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-197"><a href="#specimen-197"><span class="linenos">197</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-198"><a href="#specimen-198"><span class="linenos">198</span></a><span class="sd">         type returns the material type of the resource. (was material).</span>
+</span><span id="specimen-199"><a href="#specimen-199"><span class="linenos">199</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-200"><a href="#specimen-200"><span class="linenos">200</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;type/coding/0/code&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -675,6 +797,60 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
 
                             </div>
+                            <div id="specimen.centrifugation_date" class="classattr">
+                                        <input id="specimen.centrifugation_date-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">centrifugation_date</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="specimen.centrifugation_date-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#specimen.centrifugation_date"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.centrifugation_date-72"><a href="#specimen.centrifugation_date-72"><span class="linenos">72</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.centrifugation_date-73"><a href="#specimen.centrifugation_date-73"><span class="linenos">73</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">centrifugation_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.centrifugation_date-74"><a href="#specimen.centrifugation_date-74"><span class="linenos">74</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.centrifugation_date-75"><a href="#specimen.centrifugation_date-75"><span class="linenos">75</span></a><span class="sd">         centrifugation_date returns the centrifugation date.</span>
+</span><span id="specimen.centrifugation_date-76"><a href="#specimen.centrifugation_date-76"><span class="linenos">76</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.centrifugation_date-77"><a href="#specimen.centrifugation_date-77"><span class="linenos">77</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
+</span><span id="specimen.centrifugation_date-78"><a href="#specimen.centrifugation_date-78"><span class="linenos">78</span></a>        <span class="n">centriext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/preCentrifugationDelayDate&quot;</span><span class="p">)</span>
+</span><span id="specimen.centrifugation_date-79"><a href="#specimen.centrifugation_date-79"><span class="linenos">79</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">centriext</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>centrifugation_date returns the centrifugation date.</p>
+</div>
+
+
+                            </div>
+                            <div id="specimen.collected_date" class="classattr">
+                                        <input id="specimen.collected_date-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">collected_date</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="specimen.collected_date-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#specimen.collected_date"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.collected_date-80"><a href="#specimen.collected_date-80"><span class="linenos">80</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.collected_date-81"><a href="#specimen.collected_date-81"><span class="linenos">81</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">collected_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.collected_date-82"><a href="#specimen.collected_date-82"><span class="linenos">82</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.collected_date-83"><a href="#specimen.collected_date-83"><span class="linenos">83</span></a><span class="sd">         collected_date returns the collection date.</span>
+</span><span id="specimen.collected_date-84"><a href="#specimen.collected_date-84"><span class="linenos">84</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.collected_date-85"><a href="#specimen.collected_date-85"><span class="linenos">85</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;collection/collectedDateTime&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>collected_date returns the collection date.</p>
+</div>
+
+
+                            </div>
                             <div id="specimen.container" class="classattr">
                                         <input id="specimen.container-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -687,16 +863,95 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#specimen.container"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.container-72"><a href="#specimen.container-72"><span class="linenos">72</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen.container-73"><a href="#specimen.container-73"><span class="linenos">73</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">container</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen.container-74"><a href="#specimen.container-74"><span class="linenos">74</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen.container-75"><a href="#specimen.container-75"><span class="linenos">75</span></a><span class="sd">         container returns the container.</span>
-</span><span id="specimen.container-76"><a href="#specimen.container-76"><span class="linenos">76</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen.container-77"><a href="#specimen.container-77"><span class="linenos">77</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/identifier/0/value&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.container-86"><a href="#specimen.container-86"><span class="linenos">86</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.container-87"><a href="#specimen.container-87"><span class="linenos">87</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">container</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.container-88"><a href="#specimen.container-88"><span class="linenos">88</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.container-89"><a href="#specimen.container-89"><span class="linenos">89</span></a><span class="sd">         container returns the container.</span>
+</span><span id="specimen.container-90"><a href="#specimen.container-90"><span class="linenos">90</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.container-91"><a href="#specimen.container-91"><span class="linenos">91</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/identifier/0/value&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>container returns the container.</p>
+</div>
+
+
+                            </div>
+                            <div id="specimen.derival_date" class="classattr">
+                                        <input id="specimen.derival_date-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">derival_date</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="specimen.derival_date-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#specimen.derival_date"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.derival_date-92"><a href="#specimen.derival_date-92"><span class="linenos">92</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.derival_date-93"><a href="#specimen.derival_date-93"><span class="linenos">93</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">derival_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.derival_date-94"><a href="#specimen.derival_date-94"><span class="linenos">94</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.derival_date-95"><a href="#specimen.derival_date-95"><span class="linenos">95</span></a><span class="sd">         derival_date returns the derival date.</span>
+</span><span id="specimen.derival_date-96"><a href="#specimen.derival_date-96"><span class="linenos">96</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.derival_date-97"><a href="#specimen.derival_date-97"><span class="linenos">97</span></a>        <span class="n">e</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/derivalDate&quot;</span><span class="p">)</span>
+</span><span id="specimen.derival_date-98"><a href="#specimen.derival_date-98"><span class="linenos">98</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>derival_date returns the derival date.</p>
+</div>
+
+
+                            </div>
+                            <div id="specimen.initialamount" class="classattr">
+                                        <input id="specimen.initialamount-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">initialamount</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="specimen.initialamount-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#specimen.initialamount"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.initialamount-99"><a href="#specimen.initialamount-99"><span class="linenos"> 99</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.initialamount-100"><a href="#specimen.initialamount-100"><span class="linenos">100</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">initialamount</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.initialamount-101"><a href="#specimen.initialamount-101"><span class="linenos">101</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.initialamount-102"><a href="#specimen.initialamount-102"><span class="linenos">102</span></a><span class="sd">         initialamount returns the initial amount of the sample.</span>
+</span><span id="specimen.initialamount-103"><a href="#specimen.initialamount-103"><span class="linenos">103</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.initialamount-104"><a href="#specimen.initialamount-104"><span class="linenos">104</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;collection/quantity/value&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>initialamount returns the initial amount of the sample.</p>
+</div>
+
+
+                            </div>
+                            <div id="specimen.initialamountunit" class="classattr">
+                                        <input id="specimen.initialamountunit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">initialamountunit</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="specimen.initialamountunit-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#specimen.initialamountunit"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.initialamountunit-105"><a href="#specimen.initialamountunit-105"><span class="linenos">105</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.initialamountunit-106"><a href="#specimen.initialamountunit-106"><span class="linenos">106</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">initialamountunit</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.initialamountunit-107"><a href="#specimen.initialamountunit-107"><span class="linenos">107</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.initialamountunit-108"><a href="#specimen.initialamountunit-108"><span class="linenos">108</span></a><span class="sd">         initialamountunit returns the unit of the sample&#39;s initial amount.</span>
+</span><span id="specimen.initialamountunit-109"><a href="#specimen.initialamountunit-109"><span class="linenos">109</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.initialamountunit-110"><a href="#specimen.initialamountunit-110"><span class="linenos">110</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;collection/quantity/unit&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>initialamountunit returns the unit of the sample's initial amount.</p>
 </div>
 
 
@@ -713,14 +968,14 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#specimen.locationpath"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.locationpath-78"><a href="#specimen.locationpath-78"><span class="linenos">78</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen.locationpath-79"><a href="#specimen.locationpath-79"><span class="linenos">79</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">locationpath</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen.locationpath-80"><a href="#specimen.locationpath-80"><span class="linenos">80</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen.locationpath-81"><a href="#specimen.locationpath-81"><span class="linenos">81</span></a><span class="sd">         locationpath gets the sampleLocation. (was lagerort).</span>
-</span><span id="specimen.locationpath-82"><a href="#specimen.locationpath-82"><span class="linenos">82</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen.locationpath-83"><a href="#specimen.locationpath-83"><span class="linenos">83</span></a>        <span class="n">exta</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/sampleLocation&quot;</span><span class="p">)</span>
-</span><span id="specimen.locationpath-84"><a href="#specimen.locationpath-84"><span class="linenos">84</span></a>        <span class="n">extb</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">exta</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/sampleLocationPath&quot;</span><span class="p">)</span>
-</span><span id="specimen.locationpath-85"><a href="#specimen.locationpath-85"><span class="linenos">85</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">extb</span><span class="p">,</span> <span class="s2">&quot;valueString&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.locationpath-111"><a href="#specimen.locationpath-111"><span class="linenos">111</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.locationpath-112"><a href="#specimen.locationpath-112"><span class="linenos">112</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">locationpath</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.locationpath-113"><a href="#specimen.locationpath-113"><span class="linenos">113</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.locationpath-114"><a href="#specimen.locationpath-114"><span class="linenos">114</span></a><span class="sd">         locationpath gets the sampleLocation. (was lagerort).</span>
+</span><span id="specimen.locationpath-115"><a href="#specimen.locationpath-115"><span class="linenos">115</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.locationpath-116"><a href="#specimen.locationpath-116"><span class="linenos">116</span></a>        <span class="n">exta</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/sampleLocation&quot;</span><span class="p">)</span>
+</span><span id="specimen.locationpath-117"><a href="#specimen.locationpath-117"><span class="linenos">117</span></a>        <span class="n">extb</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">exta</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/sampleLocationPath&quot;</span><span class="p">)</span>
+</span><span id="specimen.locationpath-118"><a href="#specimen.locationpath-118"><span class="linenos">118</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">extb</span><span class="p">,</span> <span class="s2">&quot;valueString&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -741,13 +996,13 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#specimen.orga"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.orga-86"><a href="#specimen.orga-86"><span class="linenos">86</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen.orga-87"><a href="#specimen.orga-87"><span class="linenos">87</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen.orga-88"><a href="#specimen.orga-88"><span class="linenos">88</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen.orga-89"><a href="#specimen.orga-89"><span class="linenos">89</span></a><span class="sd">         orga returns the organisation or None if no organisation.</span>
-</span><span id="specimen.orga-90"><a href="#specimen.orga-90"><span class="linenos">90</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen.orga-91"><a href="#specimen.orga-91"><span class="linenos">91</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/organizationUnit&quot;</span><span class="p">)</span>
-</span><span id="specimen.orga-92"><a href="#specimen.orga-92"><span class="linenos">92</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s2">&quot;valueReference/identifier/value&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.orga-119"><a href="#specimen.orga-119"><span class="linenos">119</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.orga-120"><a href="#specimen.orga-120"><span class="linenos">120</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.orga-121"><a href="#specimen.orga-121"><span class="linenos">121</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.orga-122"><a href="#specimen.orga-122"><span class="linenos">122</span></a><span class="sd">         orga returns the organisation or None if no organisation.</span>
+</span><span id="specimen.orga-123"><a href="#specimen.orga-123"><span class="linenos">123</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.orga-124"><a href="#specimen.orga-124"><span class="linenos">124</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/organizationUnit&quot;</span><span class="p">)</span>
+</span><span id="specimen.orga-125"><a href="#specimen.orga-125"><span class="linenos">125</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s2">&quot;valueReference/identifier/value&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -768,14 +1023,14 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#specimen.parent_fhirid"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.parent_fhirid-93"><a href="#specimen.parent_fhirid-93"><span class="linenos"> 93</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen.parent_fhirid-94"><a href="#specimen.parent_fhirid-94"><span class="linenos"> 94</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parent_fhirid</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen.parent_fhirid-95"><a href="#specimen.parent_fhirid-95"><span class="linenos"> 95</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen.parent_fhirid-96"><a href="#specimen.parent_fhirid-96"><span class="linenos"> 96</span></a><span class="sd">         parent_fhirid gets the fhirid of the parent from resource.</span>
-</span><span id="specimen.parent_fhirid-97"><a href="#specimen.parent_fhirid-97"><span class="linenos"> 97</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen.parent_fhirid-98"><a href="#specimen.parent_fhirid-98"><span class="linenos"> 98</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;parent&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
-</span><span id="specimen.parent_fhirid-99"><a href="#specimen.parent_fhirid-99"><span class="linenos"> 99</span></a>            <span class="k">return</span> <span class="kc">None</span>
-</span><span id="specimen.parent_fhirid-100"><a href="#specimen.parent_fhirid-100"><span class="linenos">100</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;parent/0/reference&quot;</span><span class="p">)</span> <span class="c1"># there should only be one parent, so one element in the array</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.parent_fhirid-126"><a href="#specimen.parent_fhirid-126"><span class="linenos">126</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.parent_fhirid-127"><a href="#specimen.parent_fhirid-127"><span class="linenos">127</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parent_fhirid</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.parent_fhirid-128"><a href="#specimen.parent_fhirid-128"><span class="linenos">128</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.parent_fhirid-129"><a href="#specimen.parent_fhirid-129"><span class="linenos">129</span></a><span class="sd">         parent_fhirid gets the fhirid of the parent from resource.</span>
+</span><span id="specimen.parent_fhirid-130"><a href="#specimen.parent_fhirid-130"><span class="linenos">130</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.parent_fhirid-131"><a href="#specimen.parent_fhirid-131"><span class="linenos">131</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;parent&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
+</span><span id="specimen.parent_fhirid-132"><a href="#specimen.parent_fhirid-132"><span class="linenos">132</span></a>            <span class="k">return</span> <span class="kc">None</span>
+</span><span id="specimen.parent_fhirid-133"><a href="#specimen.parent_fhirid-133"><span class="linenos">133</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;parent/0/reference&quot;</span><span class="p">)</span> <span class="c1"># there should only be one parent, so one element in the array</span>
 </span></pre></div>
 
 
@@ -796,19 +1051,19 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#specimen.parent_sampleid"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.parent_sampleid-101"><a href="#specimen.parent_sampleid-101"><span class="linenos">101</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen.parent_sampleid-102"><a href="#specimen.parent_sampleid-102"><span class="linenos">102</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parent_sampleid</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen.parent_sampleid-103"><a href="#specimen.parent_sampleid-103"><span class="linenos">103</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen.parent_sampleid-104"><a href="#specimen.parent_sampleid-104"><span class="linenos">104</span></a><span class="sd">         parent_sampleid gets the sample id of the parent.</span>
-</span><span id="specimen.parent_sampleid-105"><a href="#specimen.parent_sampleid-105"><span class="linenos">105</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen.parent_sampleid-106"><a href="#specimen.parent_sampleid-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="s2">&quot;parent&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
-</span><span id="specimen.parent_sampleid-107"><a href="#specimen.parent_sampleid-107"><span class="linenos">107</span></a>            <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;parent&quot;</span><span class="p">):</span>
-</span><span id="specimen.parent_sampleid-108"><a href="#specimen.parent_sampleid-108"><span class="linenos">108</span></a>                <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;identifier&quot;</span> <span class="ow">in</span> <span class="n">parent</span><span class="p">:</span>
-</span><span id="specimen.parent_sampleid-109"><a href="#specimen.parent_sampleid-109"><span class="linenos">109</span></a>                    <span class="k">continue</span>
-</span><span id="specimen.parent_sampleid-110"><a href="#specimen.parent_sampleid-110"><span class="linenos">110</span></a>                <span class="k">for</span> <span class="n">coding</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;identifier/type/coding&quot;</span><span class="p">):</span>
-</span><span id="specimen.parent_sampleid-111"><a href="#specimen.parent_sampleid-111"><span class="linenos">111</span></a>                    <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;SAMPLEID&quot;</span><span class="p">:</span>
-</span><span id="specimen.parent_sampleid-112"><a href="#specimen.parent_sampleid-112"><span class="linenos">112</span></a>                        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;identifier/value&quot;</span><span class="p">)</span> <span class="c1"># pid: parent id</span>
-</span><span id="specimen.parent_sampleid-113"><a href="#specimen.parent_sampleid-113"><span class="linenos">113</span></a>        <span class="k">return</span> <span class="kc">None</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.parent_sampleid-134"><a href="#specimen.parent_sampleid-134"><span class="linenos">134</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.parent_sampleid-135"><a href="#specimen.parent_sampleid-135"><span class="linenos">135</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parent_sampleid</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.parent_sampleid-136"><a href="#specimen.parent_sampleid-136"><span class="linenos">136</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.parent_sampleid-137"><a href="#specimen.parent_sampleid-137"><span class="linenos">137</span></a><span class="sd">         parent_sampleid gets the sample id of the parent.</span>
+</span><span id="specimen.parent_sampleid-138"><a href="#specimen.parent_sampleid-138"><span class="linenos">138</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.parent_sampleid-139"><a href="#specimen.parent_sampleid-139"><span class="linenos">139</span></a>        <span class="k">if</span> <span class="s2">&quot;parent&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
+</span><span id="specimen.parent_sampleid-140"><a href="#specimen.parent_sampleid-140"><span class="linenos">140</span></a>            <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;parent&quot;</span><span class="p">):</span>
+</span><span id="specimen.parent_sampleid-141"><a href="#specimen.parent_sampleid-141"><span class="linenos">141</span></a>                <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;identifier&quot;</span> <span class="ow">in</span> <span class="n">parent</span><span class="p">:</span>
+</span><span id="specimen.parent_sampleid-142"><a href="#specimen.parent_sampleid-142"><span class="linenos">142</span></a>                    <span class="k">continue</span>
+</span><span id="specimen.parent_sampleid-143"><a href="#specimen.parent_sampleid-143"><span class="linenos">143</span></a>                <span class="k">for</span> <span class="n">coding</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;identifier/type/coding&quot;</span><span class="p">):</span>
+</span><span id="specimen.parent_sampleid-144"><a href="#specimen.parent_sampleid-144"><span class="linenos">144</span></a>                    <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;SAMPLEID&quot;</span><span class="p">:</span>
+</span><span id="specimen.parent_sampleid-145"><a href="#specimen.parent_sampleid-145"><span class="linenos">145</span></a>                        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;identifier/value&quot;</span><span class="p">)</span> <span class="c1"># pid: parent id</span>
+</span><span id="specimen.parent_sampleid-146"><a href="#specimen.parent_sampleid-146"><span class="linenos">146</span></a>        <span class="k">return</span> <span class="kc">None</span>
 </span></pre></div>
 
 
@@ -829,17 +1084,73 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#specimen.patientid"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.patientid-114"><a href="#specimen.patientid-114"><span class="linenos">114</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen.patientid-115"><a href="#specimen.patientid-115"><span class="linenos">115</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
-</span><span id="specimen.patientid-116"><a href="#specimen.patientid-116"><span class="linenos">116</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen.patientid-117"><a href="#specimen.patientid-117"><span class="linenos">117</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen.patientid-118"><a href="#specimen.patientid-118"><span class="linenos">118</span></a>        <span class="k">for</span> <span class="n">coding</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject/identifier/type/coding&quot;</span><span class="p">):</span>
-</span><span id="specimen.patientid-119"><a href="#specimen.patientid-119"><span class="linenos">119</span></a>            <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">code</span><span class="p">:</span>
-</span><span id="specimen.patientid-120"><a href="#specimen.patientid-120"><span class="linenos">120</span></a>                <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject/identifier/value&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.patientid-147"><a href="#specimen.patientid-147"><span class="linenos">147</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.patientid-148"><a href="#specimen.patientid-148"><span class="linenos">148</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
+</span><span id="specimen.patientid-149"><a href="#specimen.patientid-149"><span class="linenos">149</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.patientid-150"><a href="#specimen.patientid-150"><span class="linenos">150</span></a><span class="sd">         patientid gets the patient id of the subject.</span>
+</span><span id="specimen.patientid-151"><a href="#specimen.patientid-151"><span class="linenos">151</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.patientid-152"><a href="#specimen.patientid-152"><span class="linenos">152</span></a>        <span class="k">for</span> <span class="n">coding</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject/identifier/type/coding&quot;</span><span class="p">):</span>
+</span><span id="specimen.patientid-153"><a href="#specimen.patientid-153"><span class="linenos">153</span></a>            <span class="k">if</span> <span class="n">dig</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">code</span><span class="p">:</span>
+</span><span id="specimen.patientid-154"><a href="#specimen.patientid-154"><span class="linenos">154</span></a>                <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject/identifier/value&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
-    
+            <div class="docstring"><p>patientid gets the patient id of the subject.</p>
+</div>
+
+
+                            </div>
+                            <div id="specimen.received_date" class="classattr">
+                                        <input id="specimen.received_date-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">received_date</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="specimen.received_date-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#specimen.received_date"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.received_date-155"><a href="#specimen.received_date-155"><span class="linenos">155</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.received_date-156"><a href="#specimen.received_date-156"><span class="linenos">156</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">received_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.received_date-157"><a href="#specimen.received_date-157"><span class="linenos">157</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.received_date-158"><a href="#specimen.received_date-158"><span class="linenos">158</span></a><span class="sd">         received_date returns the received date.</span>
+</span><span id="specimen.received_date-159"><a href="#specimen.received_date-159"><span class="linenos">159</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.received_date-160"><a href="#specimen.received_date-160"><span class="linenos">160</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;receivedTime&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>received_date returns the received date.</p>
+</div>
+
+
+                            </div>
+                            <div id="specimen.reposition_date" class="classattr">
+                                        <input id="specimen.reposition_date-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">reposition_date</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="specimen.reposition_date-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#specimen.reposition_date"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.reposition_date-161"><a href="#specimen.reposition_date-161"><span class="linenos">161</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.reposition_date-162"><a href="#specimen.reposition_date-162"><span class="linenos">162</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">reposition_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.reposition_date-163"><a href="#specimen.reposition_date-163"><span class="linenos">163</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.reposition_date-164"><a href="#specimen.reposition_date-164"><span class="linenos">164</span></a><span class="sd">         reposition_date returns the reposition date.</span>
+</span><span id="specimen.reposition_date-165"><a href="#specimen.reposition_date-165"><span class="linenos">165</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.reposition_date-166"><a href="#specimen.reposition_date-166"><span class="linenos">166</span></a>        <span class="n">e</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sample/repositionDate&quot;</span><span class="p">)</span>
+</span><span id="specimen.reposition_date-167"><a href="#specimen.reposition_date-167"><span class="linenos">167</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>        
+</span></pre></div>
+
+
+            <div class="docstring"><p>reposition_date returns the reposition date.</p>
+</div>
+
 
                             </div>
                             <div id="specimen.restamount" class="classattr">
@@ -854,20 +1165,42 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#specimen.restamount"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.restamount-121"><a href="#specimen.restamount-121"><span class="linenos">121</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen.restamount-122"><a href="#specimen.restamount-122"><span class="linenos">122</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">restamount</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen.restamount-123"><a href="#specimen.restamount-123"><span class="linenos">123</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen.restamount-124"><a href="#specimen.restamount-124"><span class="linenos">124</span></a><span class="sd">         restamount returns the restmenge of the sample. (was restmenge)</span>
-</span><span id="specimen.restamount-125"><a href="#specimen.restamount-125"><span class="linenos">125</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen.restamount-126"><a href="#specimen.restamount-126"><span class="linenos">126</span></a>        <span class="c1"># pres = DictPath(resource)</span>
-</span><span id="specimen.restamount-127"><a href="#specimen.restamount-127"><span class="linenos">127</span></a>        <span class="c1">#if not &quot;value&quot; in resource[&quot;container&quot;][0][&quot;specimenQuantity&quot;]:</span>
-</span><span id="specimen.restamount-128"><a href="#specimen.restamount-128"><span class="linenos">128</span></a>        <span class="c1">#    return None</span>
-</span><span id="specimen.restamount-129"><a href="#specimen.restamount-129"><span class="linenos">129</span></a>        <span class="c1">#return resource[&quot;container&quot;][0][&quot;specimenQuantity&quot;][&quot;value&quot;]</span>
-</span><span id="specimen.restamount-130"><a href="#specimen.restamount-130"><span class="linenos">130</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/specimenQuantity/value&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.restamount-168"><a href="#specimen.restamount-168"><span class="linenos">168</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.restamount-169"><a href="#specimen.restamount-169"><span class="linenos">169</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">restamount</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.restamount-170"><a href="#specimen.restamount-170"><span class="linenos">170</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.restamount-171"><a href="#specimen.restamount-171"><span class="linenos">171</span></a><span class="sd">         restamount returns the restmenge of the sample.</span>
+</span><span id="specimen.restamount-172"><a href="#specimen.restamount-172"><span class="linenos">172</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.restamount-173"><a href="#specimen.restamount-173"><span class="linenos">173</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/specimenQuantity/value&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>restamount returns the restmenge of the sample. (was restmenge)</p>
+            <div class="docstring"><p>restamount returns the restmenge of the sample.</p>
+</div>
+
+
+                            </div>
+                            <div id="specimen.restamountunit" class="classattr">
+                                        <input id="specimen.restamountunit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">restamountunit</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="specimen.restamountunit-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#specimen.restamountunit"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.restamountunit-174"><a href="#specimen.restamountunit-174"><span class="linenos">174</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.restamountunit-175"><a href="#specimen.restamountunit-175"><span class="linenos">175</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">restamountunit</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.restamountunit-176"><a href="#specimen.restamountunit-176"><span class="linenos">176</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.restamountunit-177"><a href="#specimen.restamountunit-177"><span class="linenos">177</span></a><span class="sd">         restamountunit returns unit of the sample&#39;s restamount.</span>
+</span><span id="specimen.restamountunit-178"><a href="#specimen.restamountunit-178"><span class="linenos">178</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.restamountunit-179"><a href="#specimen.restamountunit-179"><span class="linenos">179</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;container/0/specimenQuantity/unit&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>restamountunit returns unit of the sample's restamount.</p>
 </div>
 
 
@@ -884,12 +1217,12 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#specimen.sampleid"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.sampleid-131"><a href="#specimen.sampleid-131"><span class="linenos">131</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen.sampleid-132"><a href="#specimen.sampleid-132"><span class="linenos">132</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sampleid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;SAMPLEID&quot;</span><span class="p">):</span>
-</span><span id="specimen.sampleid-133"><a href="#specimen.sampleid-133"><span class="linenos">133</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen.sampleid-134"><a href="#specimen.sampleid-134"><span class="linenos">134</span></a><span class="sd">         sampleid returns the sample id of a resource.</span>
-</span><span id="specimen.sampleid-135"><a href="#specimen.sampleid-135"><span class="linenos">135</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen.sampleid-136"><a href="#specimen.sampleid-136"><span class="linenos">136</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.sampleid-180"><a href="#specimen.sampleid-180"><span class="linenos">180</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.sampleid-181"><a href="#specimen.sampleid-181"><span class="linenos">181</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sampleid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;SAMPLEID&quot;</span><span class="p">):</span>
+</span><span id="specimen.sampleid-182"><a href="#specimen.sampleid-182"><span class="linenos">182</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.sampleid-183"><a href="#specimen.sampleid-183"><span class="linenos">183</span></a><span class="sd">         sampleid returns the sample id of a resource.</span>
+</span><span id="specimen.sampleid-184"><a href="#specimen.sampleid-184"><span class="linenos">184</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.sampleid-185"><a href="#specimen.sampleid-185"><span class="linenos">185</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -910,14 +1243,14 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#specimen.sprec"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.sprec-137"><a href="#specimen.sprec-137"><span class="linenos">137</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen.sprec-138"><a href="#specimen.sprec-138"><span class="linenos">138</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sprec</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;valueCoding&quot;</span><span class="p">):</span>
-</span><span id="specimen.sprec-139"><a href="#specimen.sprec-139"><span class="linenos">139</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen.sprec-140"><a href="#specimen.sprec-140"><span class="linenos">140</span></a><span class="sd">         sprec gets sprec of given name with key, default &quot;valueCoding&quot;.</span>
-</span><span id="specimen.sprec-141"><a href="#specimen.sprec-141"><span class="linenos">141</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen.sprec-142"><a href="#specimen.sprec-142"><span class="linenos">142</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
-</span><span id="specimen.sprec-143"><a href="#specimen.sprec-143"><span class="linenos">143</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/&quot;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
-</span><span id="specimen.sprec-144"><a href="#specimen.sprec-144"><span class="linenos">144</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.sprec-186"><a href="#specimen.sprec-186"><span class="linenos">186</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.sprec-187"><a href="#specimen.sprec-187"><span class="linenos">187</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sprec</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;valueCoding&quot;</span><span class="p">):</span>
+</span><span id="specimen.sprec-188"><a href="#specimen.sprec-188"><span class="linenos">188</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.sprec-189"><a href="#specimen.sprec-189"><span class="linenos">189</span></a><span class="sd">         sprec gets sprec of given name with key, default &quot;valueCoding&quot;.</span>
+</span><span id="specimen.sprec-190"><a href="#specimen.sprec-190"><span class="linenos">190</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.sprec-191"><a href="#specimen.sprec-191"><span class="linenos">191</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
+</span><span id="specimen.sprec-192"><a href="#specimen.sprec-192"><span class="linenos">192</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/&quot;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
+</span><span id="specimen.sprec-193"><a href="#specimen.sprec-193"><span class="linenos">193</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -938,12 +1271,12 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#specimen.type"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.type-146"><a href="#specimen.type-146"><span class="linenos">146</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen.type-147"><a href="#specimen.type-147"><span class="linenos">147</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen.type-148"><a href="#specimen.type-148"><span class="linenos">148</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen.type-149"><a href="#specimen.type-149"><span class="linenos">149</span></a><span class="sd">         type returns the material type of the resource. (was material).</span>
-</span><span id="specimen.type-150"><a href="#specimen.type-150"><span class="linenos">150</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen.type-151"><a href="#specimen.type-151"><span class="linenos">151</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;type/coding/0/code&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.type-195"><a href="#specimen.type-195"><span class="linenos">195</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.type-196"><a href="#specimen.type-196"><span class="linenos">196</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.type-197"><a href="#specimen.type-197"><span class="linenos">197</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.type-198"><a href="#specimen.type-198"><span class="linenos">198</span></a><span class="sd">         type returns the material type of the resource. (was material).</span>
+</span><span id="specimen.type-199"><a href="#specimen.type-199"><span class="linenos">199</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.type-200"><a href="#specimen.type-200"><span class="linenos">200</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;type/coding/0/code&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -978,19 +1311,19 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#patient"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="patient-152"><a href="#patient-152"><span class="linenos">152</span></a><span class="k">class</span><span class="w"> </span><span class="nc">patient</span><span class="p">(</span><span class="n">figs</span><span class="p">):</span>
-</span><span id="patient-153"><a href="#patient-153"><span class="linenos">153</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="patient-154"><a href="#patient-154"><span class="linenos">154</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
-</span><span id="patient-155"><a href="#patient-155"><span class="linenos">155</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="patient-156"><a href="#patient-156"><span class="linenos">156</span></a><span class="sd">         patientid returns the patientid by code.</span>
-</span><span id="patient-157"><a href="#patient-157"><span class="linenos">157</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="patient-158"><a href="#patient-158"><span class="linenos">158</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
-</span><span id="patient-159"><a href="#patient-159"><span class="linenos">159</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="patient-160"><a href="#patient-160"><span class="linenos">160</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="patient-161"><a href="#patient-161"><span class="linenos">161</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="patient-162"><a href="#patient-162"><span class="linenos">162</span></a><span class="sd">         orga returns the organization unit for a patient resource.</span>
-</span><span id="patient-163"><a href="#patient-163"><span class="linenos">163</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="patient-164"><a href="#patient-164"><span class="linenos">164</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;generalPractitioner/0/identifier/value&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="patient-201"><a href="#patient-201"><span class="linenos">201</span></a><span class="k">class</span><span class="w"> </span><span class="nc">patient</span><span class="p">(</span><span class="n">figs</span><span class="p">):</span>
+</span><span id="patient-202"><a href="#patient-202"><span class="linenos">202</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="patient-203"><a href="#patient-203"><span class="linenos">203</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
+</span><span id="patient-204"><a href="#patient-204"><span class="linenos">204</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="patient-205"><a href="#patient-205"><span class="linenos">205</span></a><span class="sd">         patientid returns the patientid by code.</span>
+</span><span id="patient-206"><a href="#patient-206"><span class="linenos">206</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="patient-207"><a href="#patient-207"><span class="linenos">207</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
+</span><span id="patient-208"><a href="#patient-208"><span class="linenos">208</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="patient-209"><a href="#patient-209"><span class="linenos">209</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="patient-210"><a href="#patient-210"><span class="linenos">210</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="patient-211"><a href="#patient-211"><span class="linenos">211</span></a><span class="sd">         orga returns the organization unit for a patient resource.</span>
+</span><span id="patient-212"><a href="#patient-212"><span class="linenos">212</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="patient-213"><a href="#patient-213"><span class="linenos">213</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;generalPractitioner/0/identifier/value&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -1008,12 +1341,12 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#patient.patientid"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="patient.patientid-153"><a href="#patient.patientid-153"><span class="linenos">153</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="patient.patientid-154"><a href="#patient.patientid-154"><span class="linenos">154</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
-</span><span id="patient.patientid-155"><a href="#patient.patientid-155"><span class="linenos">155</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="patient.patientid-156"><a href="#patient.patientid-156"><span class="linenos">156</span></a><span class="sd">         patientid returns the patientid by code.</span>
-</span><span id="patient.patientid-157"><a href="#patient.patientid-157"><span class="linenos">157</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="patient.patientid-158"><a href="#patient.patientid-158"><span class="linenos">158</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="patient.patientid-202"><a href="#patient.patientid-202"><span class="linenos">202</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="patient.patientid-203"><a href="#patient.patientid-203"><span class="linenos">203</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
+</span><span id="patient.patientid-204"><a href="#patient.patientid-204"><span class="linenos">204</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="patient.patientid-205"><a href="#patient.patientid-205"><span class="linenos">205</span></a><span class="sd">         patientid returns the patientid by code.</span>
+</span><span id="patient.patientid-206"><a href="#patient.patientid-206"><span class="linenos">206</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="patient.patientid-207"><a href="#patient.patientid-207"><span class="linenos">207</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -1034,12 +1367,12 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#patient.orga"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="patient.orga-159"><a href="#patient.orga-159"><span class="linenos">159</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="patient.orga-160"><a href="#patient.orga-160"><span class="linenos">160</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="patient.orga-161"><a href="#patient.orga-161"><span class="linenos">161</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="patient.orga-162"><a href="#patient.orga-162"><span class="linenos">162</span></a><span class="sd">         orga returns the organization unit for a patient resource.</span>
-</span><span id="patient.orga-163"><a href="#patient.orga-163"><span class="linenos">163</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="patient.orga-164"><a href="#patient.orga-164"><span class="linenos">164</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;generalPractitioner/0/identifier/value&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="patient.orga-208"><a href="#patient.orga-208"><span class="linenos">208</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="patient.orga-209"><a href="#patient.orga-209"><span class="linenos">209</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="patient.orga-210"><a href="#patient.orga-210"><span class="linenos">210</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="patient.orga-211"><a href="#patient.orga-211"><span class="linenos">211</span></a><span class="sd">         orga returns the organization unit for a patient resource.</span>
+</span><span id="patient.orga-212"><a href="#patient.orga-212"><span class="linenos">212</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="patient.orga-213"><a href="#patient.orga-213"><span class="linenos">213</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;generalPractitioner/0/identifier/value&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
