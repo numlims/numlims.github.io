@@ -54,7 +54,7 @@
                                 <a class="function" href="#specimen.category">category</a>
                         </li>
                         <li>
-                                <a class="function" href="#specimen.centrifugation_date">centrifugation_date</a>
+                                <a class="function" href="#specimen.pre_centrifugation_date">pre_centrifugation_date</a>
                         </li>
                         <li>
                                 <a class="function" href="#specimen.collected_date">collected_date</a>
@@ -105,6 +105,9 @@
                                 <a class="function" href="#specimen.sprec">sprec</a>
                         </li>
                         <li>
+                                <a class="function" href="#specimen.stockprocessing_date">stockprocessing_date</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#specimen.type">type</a>
                         </li>
                 </ul>
@@ -118,6 +121,30 @@
                         </li>
                         <li>
                                 <a class="function" href="#patient.orga">orga</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#observation">observation</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#observation.code">code</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#observation.subject">subject</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#observation.effectivedate">effectivedate</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#observation.method">method</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#observation.specimen">specimen</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#observation.component">component</a>
                         </li>
                 </ul>
 
@@ -214,9 +241,9 @@ figs    </h1>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sampleCategory&quot;</span><span class="p">)</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s2">&quot;valueCoding/code&quot;</span><span class="p">)</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">centrifugation_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">pre_centrifugation_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
 </span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">         centrifugation_date returns the centrifugation date.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">         pre_centrifugation_date returns the pre centrifugation date.</span>
 </span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
 </span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="n">centriext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/preCentrifugationDelayDate&quot;</span><span class="p">)</span>
@@ -335,26 +362,105 @@ figs    </h1>
 </span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
 </span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/&quot;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
 </span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="c1">#`stockprocessing``</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">         type returns the material type of the resource. (was material).</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">stockprocessing_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">         stockprocessing_date returns the stock processing date of the</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">         resource.</span>
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;type/coding/0/code&quot;</span><span class="p">)</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="k">class</span><span class="w"> </span><span class="nc">patient</span><span class="p">(</span><span class="n">figs</span><span class="p">):</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">         patientid returns the patientid by code.</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">         orga returns the organization unit for a patient resource.</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;generalPractitioner/0/identifier/value&quot;</span><span class="p">)</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="n">centriext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/stockProcessingDate&quot;</span><span class="p">)</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">centriext</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">         type returns the material type of the resource. (was material).</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;type/coding/0/code&quot;</span><span class="p">)</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="k">class</span><span class="w"> </span><span class="nc">patient</span><span class="p">(</span><span class="n">figs</span><span class="p">):</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">         patientid returns the patientid by code.</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">         orga returns the organization unit for a patient resource.</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;generalPractitioner/0/identifier/value&quot;</span><span class="p">)</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="k">class</span><span class="w"> </span><span class="nc">observation</span><span class="p">(</span><span class="n">figs</span><span class="p">):</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">code</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">         code returns the name of the observation (finding / messbefund).</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;code/coding/0/code&quot;</span><span class="p">)</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">subject</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">         subject returns the patient idcontainer(s) this finding belongs to.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="k">return</span> <span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject&quot;</span><span class="p">))</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">effectivedate</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">         effectivedate returns the effective date time (creation date?).</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;effective_date_time&quot;</span><span class="p">)</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">         method returns the method (messprofil) code.</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;method/coding/0/code&quot;</span><span class="p">)</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">specimen</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">         specimen returns the ids of the accompanying sample.</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>        <span class="k">return</span> <span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;specimen&quot;</span><span class="p">))</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">component</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="sd">         component returs the labvals and the accompanying recorded values.</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">         </span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">         returns a dict of labvals keyed by code with `code`, `type`, `value`</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">         and for amount units `unit` fields. type can be boolean, quantity,</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">         string, dateTime, codeableConcept.</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>        <span class="k">return</span> <span class="n">out</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>        <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>        <span class="n">component</span> <span class="o">=</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;component&quot;</span><span class="p">)</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>        <span class="k">if</span> <span class="n">component</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>            <span class="n">component</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>        <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">component</span><span class="p">:</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>            <span class="n">o</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>            <span class="n">code</span> <span class="o">=</span> <span class="n">dig</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="s2">&quot;code/coding/0/code&quot;</span><span class="p">)</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>            <span class="n">o</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">code</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>            <span class="k">if</span> <span class="s2">&quot;valueBoolean&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comp</span><span class="p">[</span><span class="s2">&quot;valueBoolean&quot;</span><span class="p">]</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;boolean&quot;</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>            <span class="k">elif</span> <span class="s2">&quot;valueQuantity&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dig</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="s2">&quot;valueQuantity/value&quot;</span><span class="p">)</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;unit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dig</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="s2">&quot;valueQuantity/unit&quot;</span><span class="p">);</span>                
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;quantity&quot;</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>            <span class="k">elif</span> <span class="s2">&quot;valueString&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comp</span><span class="p">[</span><span class="s2">&quot;valueString&quot;</span><span class="p">]</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>            <span class="k">elif</span> <span class="s2">&quot;valueDateTime&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comp</span><span class="p">[</span><span class="s2">&quot;valueDateTime&quot;</span><span class="p">]</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;dateTime&quot;</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>            <span class="k">elif</span> <span class="s2">&quot;valueCodeableConcept&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>                <span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>                <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">[</span><span class="s2">&quot;valueCodeableConcept&quot;</span><span class="p">]:</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>                    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dig</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">))</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;codeableConcept&quot;</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>            <span class="k">if</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2"> already in out dict.&quot;</span><span class="p">)</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>            <span class="n">out</span><span class="p">[</span><span class="n">code</span><span class="p">]</span> <span class="o">=</span> <span class="n">o</span>
 </span></pre></div>
 
 
@@ -635,9 +741,9 @@ identifier codes, eg: { "SAMPLEID": "abc", "EXTSAMPLEID": "cde" }</p>
 </span><span id="specimen-70"><a href="#specimen-70"><span class="linenos"> 70</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sampleCategory&quot;</span><span class="p">)</span>
 </span><span id="specimen-71"><a href="#specimen-71"><span class="linenos"> 71</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s2">&quot;valueCoding/code&quot;</span><span class="p">)</span>
 </span><span id="specimen-72"><a href="#specimen-72"><span class="linenos"> 72</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen-73"><a href="#specimen-73"><span class="linenos"> 73</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">centrifugation_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-73"><a href="#specimen-73"><span class="linenos"> 73</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">pre_centrifugation_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
 </span><span id="specimen-74"><a href="#specimen-74"><span class="linenos"> 74</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen-75"><a href="#specimen-75"><span class="linenos"> 75</span></a><span class="sd">         centrifugation_date returns the centrifugation date.</span>
+</span><span id="specimen-75"><a href="#specimen-75"><span class="linenos"> 75</span></a><span class="sd">         pre_centrifugation_date returns the pre centrifugation date.</span>
 </span><span id="specimen-76"><a href="#specimen-76"><span class="linenos"> 76</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="specimen-77"><a href="#specimen-77"><span class="linenos"> 77</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
 </span><span id="specimen-78"><a href="#specimen-78"><span class="linenos"> 78</span></a>        <span class="n">centriext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/preCentrifugationDelayDate&quot;</span><span class="p">)</span>
@@ -756,13 +862,21 @@ identifier codes, eg: { "SAMPLEID": "abc", "EXTSAMPLEID": "cde" }</p>
 </span><span id="specimen-191"><a href="#specimen-191"><span class="linenos">191</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
 </span><span id="specimen-192"><a href="#specimen-192"><span class="linenos">192</span></a>        <span class="n">ext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/&quot;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
 </span><span id="specimen-193"><a href="#specimen-193"><span class="linenos">193</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-</span><span id="specimen-194"><a href="#specimen-194"><span class="linenos">194</span></a>    <span class="c1">#`stockprocessing``</span>
-</span><span id="specimen-195"><a href="#specimen-195"><span class="linenos">195</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen-196"><a href="#specimen-196"><span class="linenos">196</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen-197"><a href="#specimen-197"><span class="linenos">197</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen-198"><a href="#specimen-198"><span class="linenos">198</span></a><span class="sd">         type returns the material type of the resource. (was material).</span>
+</span><span id="specimen-194"><a href="#specimen-194"><span class="linenos">194</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-195"><a href="#specimen-195"><span class="linenos">195</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">stockprocessing_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-196"><a href="#specimen-196"><span class="linenos">196</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-197"><a href="#specimen-197"><span class="linenos">197</span></a><span class="sd">         stockprocessing_date returns the stock processing date of the</span>
+</span><span id="specimen-198"><a href="#specimen-198"><span class="linenos">198</span></a><span class="sd">         resource.</span>
 </span><span id="specimen-199"><a href="#specimen-199"><span class="linenos">199</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen-200"><a href="#specimen-200"><span class="linenos">200</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;type/coding/0/code&quot;</span><span class="p">)</span>
+</span><span id="specimen-200"><a href="#specimen-200"><span class="linenos">200</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
+</span><span id="specimen-201"><a href="#specimen-201"><span class="linenos">201</span></a>        <span class="n">centriext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/stockProcessingDate&quot;</span><span class="p">)</span>
+</span><span id="specimen-202"><a href="#specimen-202"><span class="linenos">202</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">centriext</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>
+</span><span id="specimen-203"><a href="#specimen-203"><span class="linenos">203</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen-204"><a href="#specimen-204"><span class="linenos">204</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen-205"><a href="#specimen-205"><span class="linenos">205</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen-206"><a href="#specimen-206"><span class="linenos">206</span></a><span class="sd">         type returns the material type of the resource. (was material).</span>
+</span><span id="specimen-207"><a href="#specimen-207"><span class="linenos">207</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen-208"><a href="#specimen-208"><span class="linenos">208</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;type/coding/0/code&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -797,30 +911,30 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
 
                             </div>
-                            <div id="specimen.centrifugation_date" class="classattr">
-                                        <input id="specimen.centrifugation_date-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                            <div id="specimen.pre_centrifugation_date" class="classattr">
+                                        <input id="specimen.pre_centrifugation_date-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
                     <div class="decorator decorator-staticmethod">@staticmethod</div>
 
         <span class="def">def</span>
-        <span class="name">centrifugation_date</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+        <span class="name">pre_centrifugation_date</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
 
-                <label class="view-source-button" for="specimen.centrifugation_date-view-source"><span>View Source</span></label>
+                <label class="view-source-button" for="specimen.pre_centrifugation_date-view-source"><span>View Source</span></label>
 
     </div>
-    <a class="headerlink" href="#specimen.centrifugation_date"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.centrifugation_date-72"><a href="#specimen.centrifugation_date-72"><span class="linenos">72</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen.centrifugation_date-73"><a href="#specimen.centrifugation_date-73"><span class="linenos">73</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">centrifugation_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen.centrifugation_date-74"><a href="#specimen.centrifugation_date-74"><span class="linenos">74</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen.centrifugation_date-75"><a href="#specimen.centrifugation_date-75"><span class="linenos">75</span></a><span class="sd">         centrifugation_date returns the centrifugation date.</span>
-</span><span id="specimen.centrifugation_date-76"><a href="#specimen.centrifugation_date-76"><span class="linenos">76</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen.centrifugation_date-77"><a href="#specimen.centrifugation_date-77"><span class="linenos">77</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
-</span><span id="specimen.centrifugation_date-78"><a href="#specimen.centrifugation_date-78"><span class="linenos">78</span></a>        <span class="n">centriext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/preCentrifugationDelayDate&quot;</span><span class="p">)</span>
-</span><span id="specimen.centrifugation_date-79"><a href="#specimen.centrifugation_date-79"><span class="linenos">79</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">centriext</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>
+    <a class="headerlink" href="#specimen.pre_centrifugation_date"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.pre_centrifugation_date-72"><a href="#specimen.pre_centrifugation_date-72"><span class="linenos">72</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.pre_centrifugation_date-73"><a href="#specimen.pre_centrifugation_date-73"><span class="linenos">73</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">pre_centrifugation_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.pre_centrifugation_date-74"><a href="#specimen.pre_centrifugation_date-74"><span class="linenos">74</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.pre_centrifugation_date-75"><a href="#specimen.pre_centrifugation_date-75"><span class="linenos">75</span></a><span class="sd">         pre_centrifugation_date returns the pre centrifugation date.</span>
+</span><span id="specimen.pre_centrifugation_date-76"><a href="#specimen.pre_centrifugation_date-76"><span class="linenos">76</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.pre_centrifugation_date-77"><a href="#specimen.pre_centrifugation_date-77"><span class="linenos">77</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
+</span><span id="specimen.pre_centrifugation_date-78"><a href="#specimen.pre_centrifugation_date-78"><span class="linenos">78</span></a>        <span class="n">centriext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/preCentrifugationDelayDate&quot;</span><span class="p">)</span>
+</span><span id="specimen.pre_centrifugation_date-79"><a href="#specimen.pre_centrifugation_date-79"><span class="linenos">79</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">centriext</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>centrifugation_date returns the centrifugation date.</p>
+            <div class="docstring"><p>pre_centrifugation_date returns the pre centrifugation date.</p>
 </div>
 
 
@@ -1259,6 +1373,36 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
 
                             </div>
+                            <div id="specimen.stockprocessing_date" class="classattr">
+                                        <input id="specimen.stockprocessing_date-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">stockprocessing_date</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="specimen.stockprocessing_date-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#specimen.stockprocessing_date"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.stockprocessing_date-194"><a href="#specimen.stockprocessing_date-194"><span class="linenos">194</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.stockprocessing_date-195"><a href="#specimen.stockprocessing_date-195"><span class="linenos">195</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">stockprocessing_date</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.stockprocessing_date-196"><a href="#specimen.stockprocessing_date-196"><span class="linenos">196</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.stockprocessing_date-197"><a href="#specimen.stockprocessing_date-197"><span class="linenos">197</span></a><span class="sd">         stockprocessing_date returns the stock processing date of the</span>
+</span><span id="specimen.stockprocessing_date-198"><a href="#specimen.stockprocessing_date-198"><span class="linenos">198</span></a><span class="sd">         resource.</span>
+</span><span id="specimen.stockprocessing_date-199"><a href="#specimen.stockprocessing_date-199"><span class="linenos">199</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.stockprocessing_date-200"><a href="#specimen.stockprocessing_date-200"><span class="linenos">200</span></a>        <span class="n">sprecext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec&quot;</span><span class="p">)</span>
+</span><span id="specimen.stockprocessing_date-201"><a href="#specimen.stockprocessing_date-201"><span class="linenos">201</span></a>        <span class="n">centriext</span> <span class="o">=</span> <span class="n">figs</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sprecext</span><span class="p">,</span> <span class="s2">&quot;https://fhir.centraxx.de/extension/sprec/stockProcessingDate&quot;</span><span class="p">)</span>
+</span><span id="specimen.stockprocessing_date-202"><a href="#specimen.stockprocessing_date-202"><span class="linenos">202</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">centriext</span><span class="p">,</span> <span class="s2">&quot;valueDateTime&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>stockprocessing_date returns the stock processing date of the
+resource.</p>
+</div>
+
+
+                            </div>
                             <div id="specimen.type" class="classattr">
                                         <input id="specimen.type-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -1271,12 +1415,12 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#specimen.type"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.type-195"><a href="#specimen.type-195"><span class="linenos">195</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="specimen.type-196"><a href="#specimen.type-196"><span class="linenos">196</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="specimen.type-197"><a href="#specimen.type-197"><span class="linenos">197</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="specimen.type-198"><a href="#specimen.type-198"><span class="linenos">198</span></a><span class="sd">         type returns the material type of the resource. (was material).</span>
-</span><span id="specimen.type-199"><a href="#specimen.type-199"><span class="linenos">199</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="specimen.type-200"><a href="#specimen.type-200"><span class="linenos">200</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;type/coding/0/code&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="specimen.type-203"><a href="#specimen.type-203"><span class="linenos">203</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="specimen.type-204"><a href="#specimen.type-204"><span class="linenos">204</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="specimen.type-205"><a href="#specimen.type-205"><span class="linenos">205</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="specimen.type-206"><a href="#specimen.type-206"><span class="linenos">206</span></a><span class="sd">         type returns the material type of the resource. (was material).</span>
+</span><span id="specimen.type-207"><a href="#specimen.type-207"><span class="linenos">207</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="specimen.type-208"><a href="#specimen.type-208"><span class="linenos">208</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;type/coding/0/code&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -1311,19 +1455,19 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#patient"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="patient-201"><a href="#patient-201"><span class="linenos">201</span></a><span class="k">class</span><span class="w"> </span><span class="nc">patient</span><span class="p">(</span><span class="n">figs</span><span class="p">):</span>
-</span><span id="patient-202"><a href="#patient-202"><span class="linenos">202</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="patient-203"><a href="#patient-203"><span class="linenos">203</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
-</span><span id="patient-204"><a href="#patient-204"><span class="linenos">204</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="patient-205"><a href="#patient-205"><span class="linenos">205</span></a><span class="sd">         patientid returns the patientid by code.</span>
-</span><span id="patient-206"><a href="#patient-206"><span class="linenos">206</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="patient-207"><a href="#patient-207"><span class="linenos">207</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
-</span><span id="patient-208"><a href="#patient-208"><span class="linenos">208</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="patient-209"><a href="#patient-209"><span class="linenos">209</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="patient-210"><a href="#patient-210"><span class="linenos">210</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="patient-211"><a href="#patient-211"><span class="linenos">211</span></a><span class="sd">         orga returns the organization unit for a patient resource.</span>
-</span><span id="patient-212"><a href="#patient-212"><span class="linenos">212</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="patient-213"><a href="#patient-213"><span class="linenos">213</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;generalPractitioner/0/identifier/value&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="patient-209"><a href="#patient-209"><span class="linenos">209</span></a><span class="k">class</span><span class="w"> </span><span class="nc">patient</span><span class="p">(</span><span class="n">figs</span><span class="p">):</span>
+</span><span id="patient-210"><a href="#patient-210"><span class="linenos">210</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="patient-211"><a href="#patient-211"><span class="linenos">211</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
+</span><span id="patient-212"><a href="#patient-212"><span class="linenos">212</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="patient-213"><a href="#patient-213"><span class="linenos">213</span></a><span class="sd">         patientid returns the patientid by code.</span>
+</span><span id="patient-214"><a href="#patient-214"><span class="linenos">214</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="patient-215"><a href="#patient-215"><span class="linenos">215</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
+</span><span id="patient-216"><a href="#patient-216"><span class="linenos">216</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="patient-217"><a href="#patient-217"><span class="linenos">217</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="patient-218"><a href="#patient-218"><span class="linenos">218</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="patient-219"><a href="#patient-219"><span class="linenos">219</span></a><span class="sd">         orga returns the organization unit for a patient resource.</span>
+</span><span id="patient-220"><a href="#patient-220"><span class="linenos">220</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="patient-221"><a href="#patient-221"><span class="linenos">221</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;generalPractitioner/0/identifier/value&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -1341,12 +1485,12 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#patient.patientid"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="patient.patientid-202"><a href="#patient.patientid-202"><span class="linenos">202</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="patient.patientid-203"><a href="#patient.patientid-203"><span class="linenos">203</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
-</span><span id="patient.patientid-204"><a href="#patient.patientid-204"><span class="linenos">204</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="patient.patientid-205"><a href="#patient.patientid-205"><span class="linenos">205</span></a><span class="sd">         patientid returns the patientid by code.</span>
-</span><span id="patient.patientid-206"><a href="#patient.patientid-206"><span class="linenos">206</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="patient.patientid-207"><a href="#patient.patientid-207"><span class="linenos">207</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="patient.patientid-210"><a href="#patient.patientid-210"><span class="linenos">210</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="patient.patientid-211"><a href="#patient.patientid-211"><span class="linenos">211</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">patientid</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;LIMSPSN&quot;</span><span class="p">):</span>
+</span><span id="patient.patientid-212"><a href="#patient.patientid-212"><span class="linenos">212</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="patient.patientid-213"><a href="#patient.patientid-213"><span class="linenos">213</span></a><span class="sd">         patientid returns the patientid by code.</span>
+</span><span id="patient.patientid-214"><a href="#patient.patientid-214"><span class="linenos">214</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="patient.patientid-215"><a href="#patient.patientid-215"><span class="linenos">215</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">resource</span><span class="p">),</span> <span class="n">code</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -1367,12 +1511,12 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
 
     </div>
     <a class="headerlink" href="#patient.orga"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="patient.orga-208"><a href="#patient.orga-208"><span class="linenos">208</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="patient.orga-209"><a href="#patient.orga-209"><span class="linenos">209</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
-</span><span id="patient.orga-210"><a href="#patient.orga-210"><span class="linenos">210</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="patient.orga-211"><a href="#patient.orga-211"><span class="linenos">211</span></a><span class="sd">         orga returns the organization unit for a patient resource.</span>
-</span><span id="patient.orga-212"><a href="#patient.orga-212"><span class="linenos">212</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="patient.orga-213"><a href="#patient.orga-213"><span class="linenos">213</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;generalPractitioner/0/identifier/value&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="patient.orga-216"><a href="#patient.orga-216"><span class="linenos">216</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="patient.orga-217"><a href="#patient.orga-217"><span class="linenos">217</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">orga</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="patient.orga-218"><a href="#patient.orga-218"><span class="linenos">218</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="patient.orga-219"><a href="#patient.orga-219"><span class="linenos">219</span></a><span class="sd">         orga returns the organization unit for a patient resource.</span>
+</span><span id="patient.orga-220"><a href="#patient.orga-220"><span class="linenos">220</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="patient.orga-221"><a href="#patient.orga-221"><span class="linenos">221</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;generalPractitioner/0/identifier/value&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -1391,6 +1535,302 @@ or 'DERIVED' (this corresponds to dtype in the db). (was type).</p>
                 <dd id="patient.resource" class="function"><a href="#figs.resource">resource</a></dd>
                 <dd id="patient.resource_type" class="function"><a href="#figs.resource_type">resource_type</a></dd>
                 <dd id="patient.update_with_overwrite" class="function"><a href="#figs.update_with_overwrite">update_with_overwrite</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
+                <section id="observation">
+                            <input id="observation-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">observation</span><wbr>(<span class="base"><a href="#figs">figs</a></span>):
+
+                <label class="view-source-button" for="observation-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#observation"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="observation-222"><a href="#observation-222"><span class="linenos">222</span></a><span class="k">class</span><span class="w"> </span><span class="nc">observation</span><span class="p">(</span><span class="n">figs</span><span class="p">):</span>
+</span><span id="observation-223"><a href="#observation-223"><span class="linenos">223</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="observation-224"><a href="#observation-224"><span class="linenos">224</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">code</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="observation-225"><a href="#observation-225"><span class="linenos">225</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="observation-226"><a href="#observation-226"><span class="linenos">226</span></a><span class="sd">         code returns the name of the observation (finding / messbefund).</span>
+</span><span id="observation-227"><a href="#observation-227"><span class="linenos">227</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="observation-228"><a href="#observation-228"><span class="linenos">228</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;code/coding/0/code&quot;</span><span class="p">)</span>
+</span><span id="observation-229"><a href="#observation-229"><span class="linenos">229</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="observation-230"><a href="#observation-230"><span class="linenos">230</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">subject</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="observation-231"><a href="#observation-231"><span class="linenos">231</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="observation-232"><a href="#observation-232"><span class="linenos">232</span></a><span class="sd">         subject returns the patient idcontainer(s) this finding belongs to.</span>
+</span><span id="observation-233"><a href="#observation-233"><span class="linenos">233</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="observation-234"><a href="#observation-234"><span class="linenos">234</span></a>        <span class="k">return</span> <span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject&quot;</span><span class="p">))</span>
+</span><span id="observation-235"><a href="#observation-235"><span class="linenos">235</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="observation-236"><a href="#observation-236"><span class="linenos">236</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">effectivedate</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="observation-237"><a href="#observation-237"><span class="linenos">237</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="observation-238"><a href="#observation-238"><span class="linenos">238</span></a><span class="sd">         effectivedate returns the effective date time (creation date?).</span>
+</span><span id="observation-239"><a href="#observation-239"><span class="linenos">239</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="observation-240"><a href="#observation-240"><span class="linenos">240</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;effective_date_time&quot;</span><span class="p">)</span>
+</span><span id="observation-241"><a href="#observation-241"><span class="linenos">241</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="observation-242"><a href="#observation-242"><span class="linenos">242</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="observation-243"><a href="#observation-243"><span class="linenos">243</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="observation-244"><a href="#observation-244"><span class="linenos">244</span></a><span class="sd">         method returns the method (messprofil) code.</span>
+</span><span id="observation-245"><a href="#observation-245"><span class="linenos">245</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="observation-246"><a href="#observation-246"><span class="linenos">246</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;method/coding/0/code&quot;</span><span class="p">)</span>
+</span><span id="observation-247"><a href="#observation-247"><span class="linenos">247</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="observation-248"><a href="#observation-248"><span class="linenos">248</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">specimen</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="observation-249"><a href="#observation-249"><span class="linenos">249</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="observation-250"><a href="#observation-250"><span class="linenos">250</span></a><span class="sd">         specimen returns the ids of the accompanying sample.</span>
+</span><span id="observation-251"><a href="#observation-251"><span class="linenos">251</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="observation-252"><a href="#observation-252"><span class="linenos">252</span></a>        <span class="k">return</span> <span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;specimen&quot;</span><span class="p">))</span>
+</span><span id="observation-253"><a href="#observation-253"><span class="linenos">253</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="observation-254"><a href="#observation-254"><span class="linenos">254</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">component</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="observation-255"><a href="#observation-255"><span class="linenos">255</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="observation-256"><a href="#observation-256"><span class="linenos">256</span></a><span class="sd">         component returs the labvals and the accompanying recorded values.</span>
+</span><span id="observation-257"><a href="#observation-257"><span class="linenos">257</span></a><span class="sd">         </span>
+</span><span id="observation-258"><a href="#observation-258"><span class="linenos">258</span></a><span class="sd">         returns a dict of labvals keyed by code with `code`, `type`, `value`</span>
+</span><span id="observation-259"><a href="#observation-259"><span class="linenos">259</span></a><span class="sd">         and for amount units `unit` fields. type can be boolean, quantity,</span>
+</span><span id="observation-260"><a href="#observation-260"><span class="linenos">260</span></a><span class="sd">         string, dateTime, codeableConcept.</span>
+</span><span id="observation-261"><a href="#observation-261"><span class="linenos">261</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="observation-262"><a href="#observation-262"><span class="linenos">262</span></a>        <span class="k">return</span> <span class="n">out</span>
+</span><span id="observation-263"><a href="#observation-263"><span class="linenos">263</span></a>        <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="observation-264"><a href="#observation-264"><span class="linenos">264</span></a>        <span class="n">component</span> <span class="o">=</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;component&quot;</span><span class="p">)</span>
+</span><span id="observation-265"><a href="#observation-265"><span class="linenos">265</span></a>        <span class="k">if</span> <span class="n">component</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="observation-266"><a href="#observation-266"><span class="linenos">266</span></a>            <span class="n">component</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="observation-267"><a href="#observation-267"><span class="linenos">267</span></a>        <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">component</span><span class="p">:</span>
+</span><span id="observation-268"><a href="#observation-268"><span class="linenos">268</span></a>            <span class="n">o</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="observation-269"><a href="#observation-269"><span class="linenos">269</span></a>            <span class="n">code</span> <span class="o">=</span> <span class="n">dig</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="s2">&quot;code/coding/0/code&quot;</span><span class="p">)</span>
+</span><span id="observation-270"><a href="#observation-270"><span class="linenos">270</span></a>            <span class="n">o</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">code</span>
+</span><span id="observation-271"><a href="#observation-271"><span class="linenos">271</span></a>            <span class="k">if</span> <span class="s2">&quot;valueBoolean&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="observation-272"><a href="#observation-272"><span class="linenos">272</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comp</span><span class="p">[</span><span class="s2">&quot;valueBoolean&quot;</span><span class="p">]</span>
+</span><span id="observation-273"><a href="#observation-273"><span class="linenos">273</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;boolean&quot;</span>
+</span><span id="observation-274"><a href="#observation-274"><span class="linenos">274</span></a>            <span class="k">elif</span> <span class="s2">&quot;valueQuantity&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="observation-275"><a href="#observation-275"><span class="linenos">275</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dig</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="s2">&quot;valueQuantity/value&quot;</span><span class="p">)</span>
+</span><span id="observation-276"><a href="#observation-276"><span class="linenos">276</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;unit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dig</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="s2">&quot;valueQuantity/unit&quot;</span><span class="p">);</span>                
+</span><span id="observation-277"><a href="#observation-277"><span class="linenos">277</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;quantity&quot;</span>
+</span><span id="observation-278"><a href="#observation-278"><span class="linenos">278</span></a>            <span class="k">elif</span> <span class="s2">&quot;valueString&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="observation-279"><a href="#observation-279"><span class="linenos">279</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comp</span><span class="p">[</span><span class="s2">&quot;valueString&quot;</span><span class="p">]</span>
+</span><span id="observation-280"><a href="#observation-280"><span class="linenos">280</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span>
+</span><span id="observation-281"><a href="#observation-281"><span class="linenos">281</span></a>            <span class="k">elif</span> <span class="s2">&quot;valueDateTime&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="observation-282"><a href="#observation-282"><span class="linenos">282</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comp</span><span class="p">[</span><span class="s2">&quot;valueDateTime&quot;</span><span class="p">]</span>
+</span><span id="observation-283"><a href="#observation-283"><span class="linenos">283</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;dateTime&quot;</span>
+</span><span id="observation-284"><a href="#observation-284"><span class="linenos">284</span></a>            <span class="k">elif</span> <span class="s2">&quot;valueCodeableConcept&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="observation-285"><a href="#observation-285"><span class="linenos">285</span></a>                <span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="observation-286"><a href="#observation-286"><span class="linenos">286</span></a>                <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">[</span><span class="s2">&quot;valueCodeableConcept&quot;</span><span class="p">]:</span>
+</span><span id="observation-287"><a href="#observation-287"><span class="linenos">287</span></a>                    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dig</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">))</span>
+</span><span id="observation-288"><a href="#observation-288"><span class="linenos">288</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+</span><span id="observation-289"><a href="#observation-289"><span class="linenos">289</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;codeableConcept&quot;</span>
+</span><span id="observation-290"><a href="#observation-290"><span class="linenos">290</span></a>            <span class="k">if</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
+</span><span id="observation-291"><a href="#observation-291"><span class="linenos">291</span></a>                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2"> already in out dict.&quot;</span><span class="p">)</span>
+</span><span id="observation-292"><a href="#observation-292"><span class="linenos">292</span></a>            <span class="n">out</span><span class="p">[</span><span class="n">code</span><span class="p">]</span> <span class="o">=</span> <span class="n">o</span>
+</span></pre></div>
+
+
+    
+
+                            <div id="observation.code" class="classattr">
+                                        <input id="observation.code-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">code</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="observation.code-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#observation.code"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="observation.code-223"><a href="#observation.code-223"><span class="linenos">223</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="observation.code-224"><a href="#observation.code-224"><span class="linenos">224</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">code</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="observation.code-225"><a href="#observation.code-225"><span class="linenos">225</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="observation.code-226"><a href="#observation.code-226"><span class="linenos">226</span></a><span class="sd">         code returns the name of the observation (finding / messbefund).</span>
+</span><span id="observation.code-227"><a href="#observation.code-227"><span class="linenos">227</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="observation.code-228"><a href="#observation.code-228"><span class="linenos">228</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;code/coding/0/code&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>code returns the name of the observation (finding / messbefund).</p>
+</div>
+
+
+                            </div>
+                            <div id="observation.subject" class="classattr">
+                                        <input id="observation.subject-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">subject</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="observation.subject-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#observation.subject"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="observation.subject-229"><a href="#observation.subject-229"><span class="linenos">229</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="observation.subject-230"><a href="#observation.subject-230"><span class="linenos">230</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">subject</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="observation.subject-231"><a href="#observation.subject-231"><span class="linenos">231</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="observation.subject-232"><a href="#observation.subject-232"><span class="linenos">232</span></a><span class="sd">         subject returns the patient idcontainer(s) this finding belongs to.</span>
+</span><span id="observation.subject-233"><a href="#observation.subject-233"><span class="linenos">233</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="observation.subject-234"><a href="#observation.subject-234"><span class="linenos">234</span></a>        <span class="k">return</span> <span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;subject&quot;</span><span class="p">))</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>subject returns the patient idcontainer(s) this finding belongs to.</p>
+</div>
+
+
+                            </div>
+                            <div id="observation.effectivedate" class="classattr">
+                                        <input id="observation.effectivedate-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">effectivedate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="observation.effectivedate-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#observation.effectivedate"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="observation.effectivedate-235"><a href="#observation.effectivedate-235"><span class="linenos">235</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="observation.effectivedate-236"><a href="#observation.effectivedate-236"><span class="linenos">236</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">effectivedate</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="observation.effectivedate-237"><a href="#observation.effectivedate-237"><span class="linenos">237</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="observation.effectivedate-238"><a href="#observation.effectivedate-238"><span class="linenos">238</span></a><span class="sd">         effectivedate returns the effective date time (creation date?).</span>
+</span><span id="observation.effectivedate-239"><a href="#observation.effectivedate-239"><span class="linenos">239</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="observation.effectivedate-240"><a href="#observation.effectivedate-240"><span class="linenos">240</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;effective_date_time&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>effectivedate returns the effective date time (creation date?).</p>
+</div>
+
+
+                            </div>
+                            <div id="observation.method" class="classattr">
+                                        <input id="observation.method-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">method</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="observation.method-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#observation.method"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="observation.method-241"><a href="#observation.method-241"><span class="linenos">241</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="observation.method-242"><a href="#observation.method-242"><span class="linenos">242</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="observation.method-243"><a href="#observation.method-243"><span class="linenos">243</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="observation.method-244"><a href="#observation.method-244"><span class="linenos">244</span></a><span class="sd">         method returns the method (messprofil) code.</span>
+</span><span id="observation.method-245"><a href="#observation.method-245"><span class="linenos">245</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="observation.method-246"><a href="#observation.method-246"><span class="linenos">246</span></a>        <span class="k">return</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;method/coding/0/code&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>method returns the method (messprofil) code.</p>
+</div>
+
+
+                            </div>
+                            <div id="observation.specimen" class="classattr">
+                                        <input id="observation.specimen-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">specimen</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="observation.specimen-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#observation.specimen"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="observation.specimen-247"><a href="#observation.specimen-247"><span class="linenos">247</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="observation.specimen-248"><a href="#observation.specimen-248"><span class="linenos">248</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">specimen</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="observation.specimen-249"><a href="#observation.specimen-249"><span class="linenos">249</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="observation.specimen-250"><a href="#observation.specimen-250"><span class="linenos">250</span></a><span class="sd">         specimen returns the ids of the accompanying sample.</span>
+</span><span id="observation.specimen-251"><a href="#observation.specimen-251"><span class="linenos">251</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="observation.specimen-252"><a href="#observation.specimen-252"><span class="linenos">252</span></a>        <span class="k">return</span> <span class="n">figs</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;specimen&quot;</span><span class="p">))</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>specimen returns the ids of the accompanying sample.</p>
+</div>
+
+
+                            </div>
+                            <div id="observation.component" class="classattr">
+                                        <input id="observation.component-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator decorator-staticmethod">@staticmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">component</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">resource</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="observation.component-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#observation.component"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="observation.component-253"><a href="#observation.component-253"><span class="linenos">253</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="observation.component-254"><a href="#observation.component-254"><span class="linenos">254</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">component</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+</span><span id="observation.component-255"><a href="#observation.component-255"><span class="linenos">255</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="observation.component-256"><a href="#observation.component-256"><span class="linenos">256</span></a><span class="sd">         component returs the labvals and the accompanying recorded values.</span>
+</span><span id="observation.component-257"><a href="#observation.component-257"><span class="linenos">257</span></a><span class="sd">         </span>
+</span><span id="observation.component-258"><a href="#observation.component-258"><span class="linenos">258</span></a><span class="sd">         returns a dict of labvals keyed by code with `code`, `type`, `value`</span>
+</span><span id="observation.component-259"><a href="#observation.component-259"><span class="linenos">259</span></a><span class="sd">         and for amount units `unit` fields. type can be boolean, quantity,</span>
+</span><span id="observation.component-260"><a href="#observation.component-260"><span class="linenos">260</span></a><span class="sd">         string, dateTime, codeableConcept.</span>
+</span><span id="observation.component-261"><a href="#observation.component-261"><span class="linenos">261</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="observation.component-262"><a href="#observation.component-262"><span class="linenos">262</span></a>        <span class="k">return</span> <span class="n">out</span>
+</span><span id="observation.component-263"><a href="#observation.component-263"><span class="linenos">263</span></a>        <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="observation.component-264"><a href="#observation.component-264"><span class="linenos">264</span></a>        <span class="n">component</span> <span class="o">=</span> <span class="n">dig</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;component&quot;</span><span class="p">)</span>
+</span><span id="observation.component-265"><a href="#observation.component-265"><span class="linenos">265</span></a>        <span class="k">if</span> <span class="n">component</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="observation.component-266"><a href="#observation.component-266"><span class="linenos">266</span></a>            <span class="n">component</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="observation.component-267"><a href="#observation.component-267"><span class="linenos">267</span></a>        <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">component</span><span class="p">:</span>
+</span><span id="observation.component-268"><a href="#observation.component-268"><span class="linenos">268</span></a>            <span class="n">o</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="observation.component-269"><a href="#observation.component-269"><span class="linenos">269</span></a>            <span class="n">code</span> <span class="o">=</span> <span class="n">dig</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="s2">&quot;code/coding/0/code&quot;</span><span class="p">)</span>
+</span><span id="observation.component-270"><a href="#observation.component-270"><span class="linenos">270</span></a>            <span class="n">o</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">code</span>
+</span><span id="observation.component-271"><a href="#observation.component-271"><span class="linenos">271</span></a>            <span class="k">if</span> <span class="s2">&quot;valueBoolean&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="observation.component-272"><a href="#observation.component-272"><span class="linenos">272</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comp</span><span class="p">[</span><span class="s2">&quot;valueBoolean&quot;</span><span class="p">]</span>
+</span><span id="observation.component-273"><a href="#observation.component-273"><span class="linenos">273</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;boolean&quot;</span>
+</span><span id="observation.component-274"><a href="#observation.component-274"><span class="linenos">274</span></a>            <span class="k">elif</span> <span class="s2">&quot;valueQuantity&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="observation.component-275"><a href="#observation.component-275"><span class="linenos">275</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dig</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="s2">&quot;valueQuantity/value&quot;</span><span class="p">)</span>
+</span><span id="observation.component-276"><a href="#observation.component-276"><span class="linenos">276</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;unit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dig</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="s2">&quot;valueQuantity/unit&quot;</span><span class="p">);</span>                
+</span><span id="observation.component-277"><a href="#observation.component-277"><span class="linenos">277</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;quantity&quot;</span>
+</span><span id="observation.component-278"><a href="#observation.component-278"><span class="linenos">278</span></a>            <span class="k">elif</span> <span class="s2">&quot;valueString&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="observation.component-279"><a href="#observation.component-279"><span class="linenos">279</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comp</span><span class="p">[</span><span class="s2">&quot;valueString&quot;</span><span class="p">]</span>
+</span><span id="observation.component-280"><a href="#observation.component-280"><span class="linenos">280</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span>
+</span><span id="observation.component-281"><a href="#observation.component-281"><span class="linenos">281</span></a>            <span class="k">elif</span> <span class="s2">&quot;valueDateTime&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="observation.component-282"><a href="#observation.component-282"><span class="linenos">282</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comp</span><span class="p">[</span><span class="s2">&quot;valueDateTime&quot;</span><span class="p">]</span>
+</span><span id="observation.component-283"><a href="#observation.component-283"><span class="linenos">283</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;dateTime&quot;</span>
+</span><span id="observation.component-284"><a href="#observation.component-284"><span class="linenos">284</span></a>            <span class="k">elif</span> <span class="s2">&quot;valueCodeableConcept&quot;</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span><span id="observation.component-285"><a href="#observation.component-285"><span class="linenos">285</span></a>                <span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="observation.component-286"><a href="#observation.component-286"><span class="linenos">286</span></a>                <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">[</span><span class="s2">&quot;valueCodeableConcept&quot;</span><span class="p">]:</span>
+</span><span id="observation.component-287"><a href="#observation.component-287"><span class="linenos">287</span></a>                    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dig</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">))</span>
+</span><span id="observation.component-288"><a href="#observation.component-288"><span class="linenos">288</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+</span><span id="observation.component-289"><a href="#observation.component-289"><span class="linenos">289</span></a>                <span class="n">o</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;codeableConcept&quot;</span>
+</span><span id="observation.component-290"><a href="#observation.component-290"><span class="linenos">290</span></a>            <span class="k">if</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
+</span><span id="observation.component-291"><a href="#observation.component-291"><span class="linenos">291</span></a>                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2"> already in out dict.&quot;</span><span class="p">)</span>
+</span><span id="observation.component-292"><a href="#observation.component-292"><span class="linenos">292</span></a>            <span class="n">out</span><span class="p">[</span><span class="n">code</span><span class="p">]</span> <span class="o">=</span> <span class="n">o</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>component returs the labvals and the accompanying recorded values.</p>
+
+<p>returns a dict of labvals keyed by code with <code><a href="#observation.code">code</a></code>, <code>type</code>, <code>value</code>
+and for amount units <code>unit</code> fields. type can be boolean, quantity,
+string, dateTime, codeableConcept.</p>
+</div>
+
+
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="#figs">figs</a></dt>
+                                <dd id="observation.extension" class="function"><a href="#figs.extension">extension</a></dd>
+                <dd id="observation.full_url" class="function"><a href="#figs.full_url">full_url</a></dd>
+                <dd id="observation.identifiers" class="function"><a href="#figs.identifiers">identifiers</a></dd>
+                <dd id="observation.resource" class="function"><a href="#figs.resource">resource</a></dd>
+                <dd id="observation.resource_type" class="function"><a href="#figs.resource_type">resource_type</a></dd>
+                <dd id="observation.update_with_overwrite" class="function"><a href="#figs.update_with_overwrite">update_with_overwrite</a></dd>
 
             </div>
                                 </dl>
